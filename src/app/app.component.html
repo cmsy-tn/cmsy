@@ -5,12 +5,12 @@
         </div>
 
         <!-- USER IS NOT AUTHENTICATED -->
-        <ng-container>
+        <ng-container *ngIf="(auth.isAuthenticated$ | async) === false">
             <button class="btn btn-success" (click)="auth.loginWithRedirect()">Log in</button>
         </ng-container>
 
         <!-- USER HAS BEEN AUTHENTICATED -->
-        <ng-container>
+        <ng-container *ngIf="(auth.isAuthenticated$ | async) === true">
             <div class="flex-none gap-2">
                 <div class="form-control">
                     <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
