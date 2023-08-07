@@ -1,1 +1,3 @@
-<p>profile works!</p>
+<ul *ngIf="auth.user$ | async as user">
+    <li>{{ user.email }}</li>
+</ul>
