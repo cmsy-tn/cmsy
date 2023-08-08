@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
 
   routes: any[] = [
-    { label: 'dashboard', link: 'dashboard', icon: 'aaaa' },
+    { label: 'dashboard', link: 'dashboard', icon: `` },
     { label: 'faq', link: 'faq', icon: 'aaaa' },
     { label: 'settings', link: 'settings', icon: 'aaaa' }
   ];
