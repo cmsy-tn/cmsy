@@ -1,15 +1,17 @@
-<!-- USER IS LOGGED IN -->
-<ng-container *ngIf="(auth0.isAuthenticated$ | async) === true">
-    <cmsy-dashboard></cmsy-dashboard>
-</ng-container>
+<section class="w-full h-[100vh]">
+    <!-- USER IS LOGGED IN -->
+    <ng-container *ngIf="(auth0.isAuthenticated$ | async) === true">
+        <cmsy-dashboard></cmsy-dashboard>
+    </ng-container>
 
-<!-- USER IS NOT LOGGED IN -->
-<ng-container *ngIf="(auth0.isAuthenticated$ | async) === false">
-    <cmsy-authentication-alert></cmsy-authentication-alert>
-</ng-container>
+    <!-- USER IS NOT LOGGED IN -->
+    <ng-container *ngIf="(auth0.isAuthenticated$ | async) === false">
+        <cmsy-authentication-alert></cmsy-authentication-alert>
+    </ng-container>
 
 
-<!-- @TODO LOADING STATE -->
-<ng-container *ngIf="(auth0.isLoading$ | async) === true">
-    <cmsy-loading></cmsy-loading>
-</ng-container>
+    <!-- @TODO LOADING STATE -->
+    <ng-container *ngIf="(auth0.isLoading$ | async) === true">
+        <cmsy-loading></cmsy-loading>
+    </ng-container>
+</section>
