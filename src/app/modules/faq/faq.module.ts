@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FaqRoutingModule } from './faq-routing.module';
+
+// CUSTOM VIEWS & COMPONENTS
+import { IndexComponent } from './views/index/index.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    IndexComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    FaqRoutingModule
   ]
 })
 export class FaqModule { }
