@@ -6,17 +6,19 @@ import { AuthModule } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './views/home/home.component';
-import { ProfileComponent } from './views/profile/profile.component';
-import { SettingsComponent } from './views/settings/settings.component';
 import { environment } from 'src/environments/environment';
+import { AuthenticationAlertComponent } from './views/authentication-alert/authentication-alert.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ProfileComponent,
-    SettingsComponent
+    AuthenticationAlertComponent,
+    NotFoundComponent,
+    LoaderComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
