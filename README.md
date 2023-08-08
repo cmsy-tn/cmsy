@@ -45,6 +45,13 @@ Once you're logged in, head ovcer to `Applicattions` and created a new one.
 
 ![Alt text](./src/assets/github/auth0-application-type.png)
 
+Using the Auth0 dashboard, you could disable sign ups and social logins.
+That way you have more control over who uses your CMS.
+
+![Alt text](./src/assets/github/auth0-disable-social-logins.png)
+
+![Alt text](./src/assets/github/auth0-disable-signups.png)
+
 ### Application set up
 
 Now that the Auth0 app has been created, your SPA (this project) should be able to point at that specific instance using a combination of clientID and domain strings.  
