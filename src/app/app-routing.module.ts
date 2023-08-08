@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'faq', component: DashboardComponent },
-  { path: 'settings', component: DashboardComponent },
+  { path: 'faq', loadChildren: () => import("src/app/modules/faq/faq.module").then((module) => module.FaqModule) },
+  { path: 'settings', loadChildren: () => import("src/app/modules/settings/settings.module").then((module) => module.SettingsModule) },
   { path: '**', component: NotFoundComponent },
 ];
 
