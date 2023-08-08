@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { SettingsComponent } from './views/settings/settings.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,8 @@ import { SettingsComponent } from './views/settings/settings.component';
     AppRoutingModule,
     // Import the module into the application, with configuration
     AuthModule.forRoot({
-      domain: 'dev-blucf6ji.us.auth0.com',
-      clientId: 'jxL7pDleEaChsAUn9uzGoi3QaYTFviNm',
+      domain: environment.auth0.domain,
+      clientId: environment.auth0.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin
       }
