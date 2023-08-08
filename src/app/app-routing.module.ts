@@ -6,7 +6,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: "full", component: DashboardComponent },
+  { path: '/', pathMatch: "full", component: DashboardComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
