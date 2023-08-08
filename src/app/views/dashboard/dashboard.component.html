@@ -1,5 +1,11 @@
-<div class="container">
-    <!-- @TODO navbar here -->
-    <h1>DASHBOARD VIEW !!</h1>
-    <router-outlet></router-outlet>
+<div class="w-4/5 h-[100vh] mx-auto">
+
+    <cmsy-navbar></cmsy-navbar>
+
+    <div class="flex flex-row justify-between items-start">
+        <cmsy-sidebar></cmsy-sidebar>
+        <main class="w-auto h-ful">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
 </div>

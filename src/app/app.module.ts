@@ -11,6 +11,8 @@ import { AuthenticationAlertComponent } from './views/authentication-alert/authe
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     NotFoundComponent,
     DashboardComponent,
     LoadingComponent,
+    SidebarComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
