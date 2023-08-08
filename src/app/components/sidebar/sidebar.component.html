@@ -2,7 +2,7 @@
     <ng-container *ngFor="let linkGroup of routes">
         <li (click)="navigateToRoute(linkGroup.label)">
             <a>
-                {{linkGroup.icon}}
+                <i [class]="'bi bi-' + linkGroup.icon"></i>
                 {{linkGroup.label}}
             </a>
         </li>
