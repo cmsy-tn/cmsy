@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cmsy-sidebar',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  routes: any[] = [
+    { label: 'home', link: '/', icon: 'aaaa' },
+    { label: 'faq', link: 'faq', icon: 'aaaa' },
+    { label: 'settings', link: 'settings', icon: 'aaaa' }
+  ];
+
+  constructor(private router: Router) { }
+
+  navigateToRoute(link: string) {
+    this.router.navigate([link]);
+  }
 }
