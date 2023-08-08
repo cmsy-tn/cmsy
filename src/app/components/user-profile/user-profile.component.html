@@ -12,4 +12,6 @@
         <strong>{{(auth0.user$ | async)?.email}}</strong>
     </h4>
 
+    <div class="divider"></div>
+    <button (click)="auth0.logout()">Sign out 🚪</button>
 </div>
