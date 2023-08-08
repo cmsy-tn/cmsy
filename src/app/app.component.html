@@ -1,7 +1,16 @@
 <section class="w-full h-[100vh]">
     <!-- USER IS LOGGED IN -->
     <ng-container *ngIf="(auth0.isAuthenticated$ | async) === true">
-        <cmsy-dashboard></cmsy-dashboard>
+        <div class="w-4/5 h-[100vh] mx-auto">
+            <cmsy-navbar></cmsy-navbar>
+
+            <div class="flex flex-row justify-between items-start">
+                <cmsy-sidebar></cmsy-sidebar>
+                <main class="w-4/5 h-full">
+                    <router-outlet></router-outlet>
+                </main>
+            </div>
+        </div>
     </ng-container>
 
     <!-- USER IS NOT LOGGED IN -->
