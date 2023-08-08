@@ -13,6 +13,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoadingComponent,
     SidebarComponent,
     NavbarComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
