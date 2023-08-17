@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import FAQTYPE from 'src/app/types/faq';
 
 @Component({
   selector: 'cmsy-index',
@@ -6,5 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent {
-
+  FAQ_DATA: FAQTYPE[] = [
+    {
+      question: "string",
+      answer: "string",
+      hasCategory: true,
+      category: "string"
+    },
+    {
+      question: "string",
+      answer: "string",
+      hasCategory: true,
+      category: "string"
+    },
+    {
+      question: "string",
+      answer: "string",
+      hasCategory: true,
+      category: "string"
+    },
+  ]
 }

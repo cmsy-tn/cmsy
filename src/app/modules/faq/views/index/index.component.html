@@ -1,1 +1,10 @@
-<p>index works!</p>
+<section id="faq__section">
+    <h1 class="text-3xl text-white font-sans capitalize">
+        Frequently Asked Questions
+    </h1>
+    <main id="faq_gridLayout" class="grid gap-4 w-full h-full mt-8">
+        <ng-container *ngFor="let faq of FAQ_DATA">
+            <cmsy-faq-card></cmsy-faq-card>
+        </ng-container>
+    </main>
+</section>

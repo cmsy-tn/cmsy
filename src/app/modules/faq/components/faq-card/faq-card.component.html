@@ -1,0 +1,35 @@
+<div
+    [class]="
+        [
+            'faq__card',
+            'p-4 rounded-lg border border-[#3d3d3d]',
+            ' bg-[#242424] text-primary-content'
+        ] | concatclasses
+    "
+>
+    <div
+        [class]="
+            [
+                'faq__card_header',
+                'w-full flex flex-row justify-between items-center',
+                'mb-4'
+            ] | concatclasses
+        "
+    >
+        <span class="faq_date font-sans font-light text-sm"
+            >Augh 17th, 2023</span
+        >
+        <i class="bi bi-trash"></i>
+    </div>
+    <!-- ACTUAL FAQ -->
+    <div class="faq__card_content">
+        <h3 class="font-sans font-bold text-xl mb-4">
+            Lorem ipsum dolor sit amet consectetur.
+        </h3>
+        <p class="font-sans font-light text-base">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsam
+            atque assumenda, praesentium nam at velit doloribus molestiae
+            voluptatem. Illum?
+        </p>
+    </div>
+</div>
