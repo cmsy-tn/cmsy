@@ -2,9 +2,75 @@
     <h1 class="text-3xl text-white font-sans capitalize">
         Frequently Asked Questions
     </h1>
-    <main id="faq_gridLayout" class="grid gap-4 w-full h-full mt-8">
-        <ng-container *ngFor="let faq of FAQ_DATA">
-            <cmsy-faq-card></cmsy-faq-card>
-        </ng-container>
-    </main>
+
+    <form [formGroup]="FAQ_FORM">
+        <div
+            formArrayName="FAQ"
+            id="faq_gridLayout"
+            class="grid gap-4 w-full h-full mt-8"
+        >
+            <!-- YOUR FORM CONTROLS GO HERE -->
+
+            <ng-container
+                *ngFor="let FGROUP of GET_FORM_ARRAY.controls; let i = index"
+            >
+                <div [formGroupName]="i">
+                    <div
+                        [class]="
+                            [
+                                'faq__card',
+                                'p-4 rounded-lg border border-[#3d3d3d]',
+                                ' bg-[#242424] text-primary-content'
+                            ] | concatclasses
+                        "
+                    >
+                        <div
+                            class="faq__card_header w-full flex flex-row justify-end"
+                        >
+                            <i
+                                class="bi bi-trash cursor-pointer"
+                                (click)="deleteGroupFromArray(i)"
+                            ></i>
+                        </div>
+                        <!-- ACTUAL FAQ -->
+                        <div
+                            class="faq__card_content w-full flex flex-col justify-start gap-4"
+                        >
+                            <label for="question_input"
+                                >Question to display</label
+                            >
+                            <input
+                                id="question_input"
+                                type="text"
+                                name="question_input"
+                                formControlName="question__control"
+                            />
+
+                            <label for="answer_input">Answer to display</label>
+                            <textarea
+                                id="answer_input"
+                                name="answer_input"
+                                formControlName="answer__control"
+                                cols="30"
+                                rows="10"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <button
+                [class]="
+                    [
+                        'w-full min-h-[200px]',
+                        'bg-[#0d0d0d] border border-[#3d3d3d] rounded-lg',
+                        'flex flex-row items-center justify-center'
+                    ] | concatclasses
+                "
+                (click)="addFormGroupToArray()"
+            >
+                <i class="bi bi-plus-square-dotted text-5xl"></i>
+            </button>
+        </div>
+    </form>
 </section>
