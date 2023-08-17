@@ -1,4 +1,6 @@
 <section id="faq__section">
+    <!-- HEADER SECTION -->
+
     <div
         id="faq__section_main_header"
         class="w-full flex flex-row justify-between items-center"
@@ -8,7 +10,7 @@
         </h1>
         <button class="btn btn-outline btn-success capitalize">save</button>
     </div>
-
+    <!-- CRUD FORM SECTION -->
     <form [formGroup]="FAQ_FORM">
         <div
             formArrayName="FAQ"
@@ -82,4 +84,19 @@
             </button>
         </div>
     </form>
+
+    <!-- USER DATA DISPLAY SECTION -->
+    <div class="divider"></div>
+    <ng-container *ngIf="isFetchingData === true">
+        <span class="loading loading-dots loading-lg"></span>
+    </ng-container>
+    <main
+        id="faq_gridLayout"
+        class="grid gap-4 w-full h-full mt-8"
+        *ngIf="isFetchingData === false"
+    >
+        <ng-container *ngFor="let faq of FAQ_DATA">
+            <cmsy-faq-card [data]="faq"></cmsy-faq-card>
+        </ng-container>
+    </main>
 </section>
