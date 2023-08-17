@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FaqService } from '../../faq.service';
 
 
 @Component({
@@ -11,7 +12,10 @@ export class IndexComponent implements OnInit {
 
   FAQ_FORM!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private faqService: FaqService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.constructForm();
@@ -38,5 +42,14 @@ export class IndexComponent implements OnInit {
 
   deleteGroupFromArray(index: number) {
     this.GET_FORM_ARRAY.removeAt(index);
+  }
+
+  saveFAQS() {
+    this.faqService.addElement(this.FAQ_FORM.value.FAQ).subscribe({
+      next: () => {
+        // @TODO add success message
+        // @TODO add  logic in service to handle sending an array of data
+      }
+    })
   }
 }

@@ -8,7 +8,13 @@
         <h1 class="text-3xl text-white font-sans capitalize">
             Frequently Asked Questions
         </h1>
-        <button class="btn btn-outline btn-success capitalize">save</button>
+        <button
+            class="btn btn-outline btn-success capitalize"
+            (click)="saveFAQS()"
+            *ngIf="FAQ_FORM.touched && FAQ_FORM.valid"
+        >
+            save
+        </button>
     </div>
     <!-- CRUD FORM SECTION -->
     <form [formGroup]="FAQ_FORM">
