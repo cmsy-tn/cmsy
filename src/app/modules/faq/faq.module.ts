@@ -6,13 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './views/index/index.component';
 import { FaqCardComponent } from './components/faq-card/faq-card.component';
 import { SharedModule } from "../shared/shared/shared.module";
+import { FaqDataComponent } from './components/faq-data/faq-data.component';
 
 
 
 @NgModule({
   declarations: [
     IndexComponent,
-    FaqCardComponent
+    FaqCardComponent,
+    FaqDataComponent
   ],
   imports: [
     CommonModule,

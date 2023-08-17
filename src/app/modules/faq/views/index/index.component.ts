@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import FAQTYPE from 'src/app/types/faq';
-import { FaqService } from '../../faq.service';
+
 
 @Component({
   selector: 'cmsy-index',
@@ -9,32 +8,18 @@ import { FaqService } from '../../faq.service';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  FAQ_DATA: FAQTYPE[] = []
-  FAQ_FORM!: FormGroup;
-  isFetchingData: boolean = true;
 
-  constructor(
-    private fb: FormBuilder,
-    private faqService: FaqService
-  ) { }
+  FAQ_FORM!: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.constructForm();
-    this.fetchData();
   }
 
   constructForm() {
     this.FAQ_FORM = this.fb.group({
       FAQ: this.fb.array([])
-    })
-  }
-
-  fetchData() {
-    this.faqService.getElements().subscribe({
-      next: (response: FAQTYPE[]) => {
-        this.FAQ_DATA = response;
-        this.isFetchingData = !this.isFetchingData;
-      }
     })
   }
 
