@@ -3,4 +3,5 @@ export default interface FAQTYPE {
     answer: string;
     hasCategory: boolean;
     category: string;
+    date: 'Aug 17th, 2023'
 }
