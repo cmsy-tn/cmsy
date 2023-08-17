@@ -14,7 +14,7 @@ export class FaqCardComponent {
   deleteFAQ(faq_id: string) {
     this.faqService.deleteElement(faq_id).subscribe({
       next: (response: any[]) => {
-        // TRIGGER TOASTER FOR SUCCESS !
+        // @TODO TRIGGER TOASTER FOR SUCCESS !
       }
     })
   }
