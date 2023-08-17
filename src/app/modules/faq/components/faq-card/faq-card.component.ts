@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'cmsy-faq-card',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./faq-card.component.scss']
 })
 export class FaqCardComponent {
-
+  @Input() data: any;
 }

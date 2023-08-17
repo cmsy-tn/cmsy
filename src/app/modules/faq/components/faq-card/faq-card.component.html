@@ -16,20 +16,18 @@
             ] | concatclasses
         "
     >
-        <span class="faq_date font-sans font-light text-sm"
-            >Augh 17th, 2023</span
-        >
+        <span class="faq_date font-sans font-light text-sm">{{
+            data.date
+        }}</span>
         <i class="bi bi-trash"></i>
     </div>
     <!-- ACTUAL FAQ -->
     <div class="faq__card_content">
         <h3 class="font-sans font-bold text-xl mb-4">
-            Lorem ipsum dolor sit amet consectetur.
+            {{ data.question }}
         </h3>
         <p class="font-sans font-light text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsam
-            atque assumenda, praesentium nam at velit doloribus molestiae
-            voluptatem. Illum?
+            {{ data.answer }}
         </p>
     </div>
 </div>
