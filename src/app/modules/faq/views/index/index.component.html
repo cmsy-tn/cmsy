@@ -40,19 +40,22 @@
                                 >Question to display</label
                             >
                             <input
-                                id="question_input"
                                 type="text"
-                                name="question_input"
+                                placeholder="How to do that thing?"
+                                id="question_input"
+                                class="input input-bordered input-accent w-full"
                                 formControlName="question__control"
                             />
 
                             <label for="answer_input">Answer to display</label>
                             <textarea
                                 id="answer_input"
+                                class="textarea textarea-accent resize-none"
                                 name="answer_input"
                                 formControlName="answer__control"
                                 cols="30"
                                 rows="10"
+                                placeholder="You need to press that button and that other one, then..."
                             ></textarea>
                         </div>
                     </div>
