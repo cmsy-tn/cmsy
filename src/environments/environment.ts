@@ -4,5 +4,5 @@ export const environment = {
         domain: 'dev-blucf6ji.us.auth0.com',
         clientId: 'jxL7pDleEaChsAUn9uzGoi3QaYTFviNm',
     },
-    API_URL: 'http://localhost;3000/'
+    API_URL: 'http://localhost:3000'
 };
