@@ -16,10 +16,10 @@
             ] | concatclasses
         "
     >
-        <span class="faq_date font-sans font-light text-sm">{{
-            data.date
-        }}</span>
-        <i class="bi bi-trash"></i>
+        <span class="faq_date font-sans font-light text-sm">
+            {{ data.date }}
+        </span>
+        <i class="bi bi-trash" (click)="deleteFAQ(data.id)"></i>
     </div>
     <!-- ACTUAL FAQ -->
     <div class="faq__card_content">
