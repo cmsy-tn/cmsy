@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import FAQTYPE from 'src/app/types/faq';
+import FAQTYPE from 'src/app/types/faq.type';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,18 +13,18 @@ export class FaqService {
   constructor(private http: HttpClient) { }
 
   addElement(faq: FAQTYPE) {
-    return this.http.post(`${this.API_URL}/faq/`, faq);
+    return this.http.post(`${this.API_URL}/f-a-q/`, faq);
   }
 
   getElements(): any {
-    return this.http.get(`${this.API_URL}/faq`);
+    return this.http.get(`${this.API_URL}/f-a-q`);
   }
 
   getElement(faq_id: string): any {
-    return this.http.get(`${this.API_URL}/faq/${faq_id}`);
+    return this.http.get(`${this.API_URL}/f-a-q/${faq_id}`);
   }
 
   deleteElement(faq_id: string): any {
-    return this.http.delete(`${this.API_URL}/faq/${faq_id}`);
+    return this.http.delete(`${this.API_URL}/f-a-q/${faq_id}`);
   }
 }
