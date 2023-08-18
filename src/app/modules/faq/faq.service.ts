@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import FAQTYPE from 'src/app/types/faq.type';
+import { FAQACTIONSTATE, FAQTYPE } from 'src/app/types/faq.type';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,6 +11,8 @@ export class FaqService {
 
   API_URL = environment.API_URL;
   DATA_IS_BEING_SENT = new BehaviorSubject(false);
+  // FAQ_HAS_BEEN_DELETED = new BehaviorSubject({ state: false, id: '' });
+  FAQ_HAS_BEEN_DELETED$ = new BehaviorSubject<FAQACTIONSTATE>(<FAQACTIONSTATE>{ state: false, id: '' });
 
   constructor(private http: HttpClient) { }
 

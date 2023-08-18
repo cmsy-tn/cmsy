@@ -13,8 +13,14 @@ export class FaqCardComponent {
 
   deleteFAQ(faq_id: string) {
     this.faqService.deleteElement(faq_id).subscribe({
-      next: (response: any[]) => {
-        // @TODO TRIGGER TOASTER FOR SUCCESS !
+      next: (response: number) => {
+        if (response !== 0) {
+          alert('⚠️ FAQ has been successfully deleted! 🗑️');
+          this.faqService.FAQ_HAS_BEEN_DELETED$.next({
+            state: true,
+            id: faq_id
+          });
+        }
       }
     })
   }

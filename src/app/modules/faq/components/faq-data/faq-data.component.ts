@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import FAQTYPE from 'src/app/types/faq.type';
+import { FAQTYPE } from 'src/app/types/faq.type';
 import { FaqService } from '../../faq.service';
 
 @Component({
@@ -14,6 +14,16 @@ export class FaqDataComponent implements OnInit {
   constructor(private faqService: FaqService) { }
 
   ngOnInit() {
+    this.fetchData();
+    this.faqService.FAQ_HAS_BEEN_DELETED$.subscribe({
+      next: (response: any) => {
+        if (response.state)
+          this.FAQ_DATA = this.FAQ_DATA.filter(element => element.id !== response.id);
+      }
+    })
+  }
+
+  fetchData() {
     this.faqService.getElements().subscribe({
       next: (response: FAQTYPE[]) => {
         this.FAQ_DATA = response;
