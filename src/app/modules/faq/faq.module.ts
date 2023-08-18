@@ -7,6 +7,7 @@ import { IndexComponent } from './views/index/index.component';
 import { FaqCardComponent } from './components/faq-card/faq-card.component';
 import { SharedModule } from "../shared/shared/shared.module";
 import { FaqDataComponent } from './components/faq-data/faq-data.component';
+import { FaqFormComponent } from './components/faq-form/faq-form.component';
 
 
 
@@ -14,7 +15,8 @@ import { FaqDataComponent } from './components/faq-data/faq-data.component';
   declarations: [
     IndexComponent,
     FaqCardComponent,
-    FaqDataComponent
+    FaqDataComponent,
+    FaqFormComponent
   ],
   imports: [
     CommonModule,
