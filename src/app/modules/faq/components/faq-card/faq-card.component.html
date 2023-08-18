@@ -19,7 +19,12 @@
         <span class="faq_date font-sans font-light text-sm">
             {{ data.date }}
         </span>
-        <i class="bi bi-trash" (click)="deleteFAQ(data.id)"></i>
+        <ng-container *ngIf="faq_being_deleted_local_state === false">
+            <i class="bi bi-trash" (click)="deleteFAQ(data.id)"></i>
+        </ng-container>
+        <ng-container *ngIf="faq_being_deleted_local_state === true">
+            <span class="loading loading-spinner text-error"></span>
+        </ng-container>
     </div>
     <!-- ACTUAL FAQ -->
     <div class="faq__card_content">

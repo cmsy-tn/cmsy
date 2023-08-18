@@ -8,10 +8,11 @@ import { FaqService } from '../../faq.service';
 })
 export class FaqCardComponent {
   @Input() data: any;
-
+  faq_being_deleted_local_state = false;
   constructor(private faqService: FaqService) { }
 
   deleteFAQ(faq_id: string) {
+    this.faq_being_deleted_local_state = true;
     this.faqService.deleteElement(faq_id).subscribe({
       next: (response: number) => {
         if (response !== 0) {
