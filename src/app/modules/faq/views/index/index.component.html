@@ -1,5 +1,10 @@
 <section id="faq__section">
-    <cmsy-faq-form></cmsy-faq-form>
+    <ng-container *ngIf="DATA_IS_BEING_SENT === true">
+        <cmsy-copying></cmsy-copying>
+    </ng-container>
+    <ng-container *ngIf="DATA_IS_BEING_SENT === false">
+        <cmsy-faq-form></cmsy-faq-form>
+    </ng-container>
     <!-- USER DATA DISPLAY SECTION -->
     <cmsy-faq-data></cmsy-faq-data>
 </section>

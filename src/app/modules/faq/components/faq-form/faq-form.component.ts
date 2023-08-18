@@ -31,8 +31,8 @@ export class FaqFormComponent implements OnInit {
 
   addFormGroupToArray() {
     const NEW_FORM_GROUP = this.fb.group({
-      question__control: [null, Validators.required],
-      answer__control: [null, Validators.required],
+      question: [null, Validators.required],
+      answer: [null, Validators.required],
     });
 
     this.GET_FORM_ARRAY.push(NEW_FORM_GROUP);
@@ -43,10 +43,13 @@ export class FaqFormComponent implements OnInit {
   }
 
   saveFAQS() {
-    this.faqService.addElement(this.FAQ_FORM.value.FAQ).subscribe({
-      next: () => {
-        // @TODO add success message
-        // @TODO add  logic in service to handle sending an array of data
+    this.faqService.DATA_IS_BEING_SENT.next(true); // updating a shared status to lock form
+    const data = this.FAQ_FORM.value.FAQ;
+
+    this.faqService.addElement(data).subscribe({
+      next: (response: any) => {
+        if (response === 1)
+          this.faqService.DATA_IS_BEING_SENT.next(false);
       }
     })
   }
