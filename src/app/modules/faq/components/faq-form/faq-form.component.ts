@@ -48,8 +48,14 @@ export class FaqFormComponent implements OnInit {
 
     this.faqService.addElement(data).subscribe({
       next: (response: any) => {
-        if (response === 1)
+        if (response === 1) {
           this.faqService.DATA_IS_BEING_SENT.next(false);
+          this.faqService.FAQ_HAS_BEEN_TRIGGERED$.next({
+            state: true,
+            id: '',
+            action: 'add'
+          });
+        }
       }
     })
   }

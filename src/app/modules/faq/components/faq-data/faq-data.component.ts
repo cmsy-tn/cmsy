@@ -15,19 +15,26 @@ export class FaqDataComponent implements OnInit {
 
   ngOnInit() {
     this.fetchData();
-    this.faqService.FAQ_HAS_BEEN_DELETED$.subscribe({
-      next: (response: any) => {
-        if (response.state)
-          this.FAQ_DATA = this.FAQ_DATA.filter(element => element.id !== response.id);
+    this.checkForUpdates();
+  }
+
+  fetchData() {
+    this.isFetchingData = true;
+    this.faqService.getElements().subscribe({
+      next: (response: FAQTYPE[]) => {
+        this.FAQ_DATA = response;
+        this.isFetchingData = false;
       }
     })
   }
 
-  fetchData() {
-    this.faqService.getElements().subscribe({
-      next: (response: FAQTYPE[]) => {
-        this.FAQ_DATA = response;
-        this.isFetchingData = !this.isFetchingData;
+  checkForUpdates() {
+    this.faqService.FAQ_HAS_BEEN_TRIGGERED$.subscribe({
+      next: (response: any) => {
+        if (response.state && response.action === 'del')
+          this.FAQ_DATA = this.FAQ_DATA.filter(element => element.id !== response.id);
+        if (response.state && response.action === 'add')
+          this.fetchData();
       }
     })
   }

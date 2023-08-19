@@ -10,4 +10,5 @@ export interface FAQTYPE {
 export interface FAQACTIONSTATE {
     state: boolean;
     id: string;
+    action: 'del' | 'add' | ''
 }

@@ -11,8 +11,7 @@ export class FaqService {
 
   API_URL = environment.API_URL;
   DATA_IS_BEING_SENT = new BehaviorSubject(false);
-  // FAQ_HAS_BEEN_DELETED = new BehaviorSubject({ state: false, id: '' });
-  FAQ_HAS_BEEN_DELETED$ = new BehaviorSubject<FAQACTIONSTATE>(<FAQACTIONSTATE>{ state: false, id: '' });
+  FAQ_HAS_BEEN_TRIGGERED$ = new BehaviorSubject<FAQACTIONSTATE>(<FAQACTIONSTATE>{ state: false, id: '', action: '' });
 
   constructor(private http: HttpClient) { }
 
