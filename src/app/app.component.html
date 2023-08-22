@@ -3,7 +3,8 @@
     <ng-container *ngIf="(auth0.isAuthenticated$ | async) === true">
         <div class="w-full h-[100vh]">
             <cmsy-navbar></cmsy-navbar>
-            <div class="flex flex-row justify-between items-start">
+
+            <div class="flex flex-row justify-between items-start mt-8">
                 <cmsy-sidebar></cmsy-sidebar>
                 <main class="w-full h-full py-4 px-8">
                     <router-outlet></router-outlet>
