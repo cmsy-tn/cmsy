@@ -7,8 +7,13 @@ export interface FAQTYPE {
     date: Date;
 }
 
+export type UPDATED_FAQ = {
+    question: string;
+    answer: string;
+}
+
 export interface FAQACTIONSTATE {
     state: boolean;
     id: string;
-    action: 'del' | 'add' | ''
+    action: 'del' | 'add' | '' | 'update'
 }

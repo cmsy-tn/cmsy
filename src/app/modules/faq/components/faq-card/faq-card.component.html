@@ -7,6 +7,7 @@
         ] | concatclasses
     "
 >
+    <!-- DISPLAY MODE HEADER -->
     <div
         [class]="
             [
@@ -15,24 +16,84 @@
                 'mb-4'
             ] | concatclasses
         "
+        *ngIf="faq_is_in_edit_mode === false"
     >
         <span class="faq_date font-sans font-light text-sm">
             {{ data.updated_at | date }}
         </span>
-        <ng-container *ngIf="faq_being_deleted_local_state === false">
-            <i class="bi bi-trash" (click)="deleteFAQ(data.id)"></i>
-        </ng-container>
-        <ng-container *ngIf="faq_being_deleted_local_state === true">
+        <div class="flex flex-row">
+            <ng-container *ngIf="faq_being_worked_on_local_state === false">
+                <i
+                    class="bi bi-pen mr-4 cursor-pointer"
+                    (click)="faq_is_in_edit_mode = true"
+                ></i>
+                <i
+                    class="bi bi-trash cursor-pointer"
+                    (click)="deleteFAQ(data.id)"
+                ></i>
+            </ng-container>
+            <ng-container *ngIf="faq_being_worked_on_local_state === true">
+                <span class="loading loading-spinner text-error"></span>
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- EDIT MODE HEADER -->
+    <div
+        *ngIf="faq_is_in_edit_mode === true"
+        class="w-full flex flex-row items-center justify-between mb-4"
+    >
+        <h3>
+            Your are now in <strong><em>EDIT</em></strong> mode
+        </h3>
+        <ng-container *ngIf="faq_being_worked_on_local_state === true">
             <span class="loading loading-spinner text-error"></span>
         </ng-container>
+        <ng-container *ngIf="faq_being_worked_on_local_state === false">
+            <div>
+                <i
+                    class="bi bi-x-square mr-4 text-2xl cursor-pointer"
+                    (click)="faq_is_in_edit_mode = false"
+                ></i>
+                <i
+                    class="bi bi-check-square text-2xl cursor-pointer"
+                    (click)="editFAQ(data.id)"
+                ></i>
+            </div>
+        </ng-container>
     </div>
-    <!-- ACTUAL FAQ -->
-    <div class="faq__card_content">
-        <h3 class="font-sans font-bold text-xl mb-4">
-            {{ data.question }}
-        </h3>
-        <p class="font-sans font-light text-base">
-            {{ data.answer }}
-        </p>
-    </div>
+
+    <!-- USED TO DISPLAY FAQ CONTENT -->
+    <ng-container *ngIf="faq_is_in_edit_mode === false">
+        <div class="faq__card_content">
+            <h3 class="font-sans font-bold text-xl mb-4">
+                {{ data.question }}
+            </h3>
+            <p class="font-sans font-light text-base">
+                {{ data.answer }}
+            </p>
+        </div>
+    </ng-container>
+
+    <!-- USED TO EDIT FAQ CONTENT -->
+    <ng-container *ngIf="faq_is_in_edit_mode === true">
+        <div class="faq__card_content">
+            <input
+                type="text"
+                id="question_input"
+                class="input input-bordered input-accent w-full"
+                [value]="data.question"
+                #question_updated
+            />
+            <textarea
+                id="answer_input"
+                class="textarea textarea-accent resize-none w-full mt-4"
+                name="answer_input"
+                [value]="data.answer"
+                cols="30"
+                rows="10"
+                #answer_updated
+            ></textarea>
+        </div>
+    </ng-container>
 </div>
