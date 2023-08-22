@@ -17,7 +17,7 @@
         "
     >
         <span class="faq_date font-sans font-light text-sm">
-            {{ data.date }}
+            {{ data.updated_at | date }}
         </span>
         <ng-container *ngIf="faq_being_deleted_local_state === false">
             <i class="bi bi-trash" (click)="deleteFAQ(data.id)"></i>
