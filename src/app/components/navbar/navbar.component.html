@@ -1,20 +1,20 @@
 <div class="drawer drawer-end">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
-
         <!-- NAVBAR COMPOENTS -->
-        <div class="navbar bg-base-100">
+        <div class="navbar bg-base-200">
             <div class="flex-1">
                 <a class="btn btn-ghost normal-case text-xl">CMSY</a>
             </div>
             <label for="my-drawer">
-                <img [src]="(auth0.user$ | async)?.picture" alt="user profile picture" class="w-[50px] h-[50px] rounded-[50%]" />
+                <img
+                    [src]="(auth0.user$ | async)?.picture"
+                    alt="user profile picture"
+                    class="w-[40px] h-[40px] rounded-[50%] cursor-pointer"
+                />
             </label>
         </div>
-
     </div>
-
-
 
     <div class="drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
@@ -22,7 +22,6 @@
             <cmsy-user-profile></cmsy-user-profile>
         </ul>
     </div>
-
 
     <!-- END OF DRAWER -->
 </div>

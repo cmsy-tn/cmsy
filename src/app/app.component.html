@@ -1,12 +1,11 @@
 <section class="w-full h-[100vh]">
     <!-- USER IS LOGGED IN -->
     <ng-container *ngIf="(auth0.isAuthenticated$ | async) === true">
-        <div class="w-4/5 h-[100vh] mx-auto">
+        <div class="w-full h-[100vh]">
             <cmsy-navbar></cmsy-navbar>
-
             <div class="flex flex-row justify-between items-start">
                 <cmsy-sidebar></cmsy-sidebar>
-                <main class="w-4/5 h-full">
+                <main class="w-full h-full py-4 px-8">
                     <router-outlet></router-outlet>
                 </main>
             </div>
@@ -17,7 +16,6 @@
     <ng-container *ngIf="(auth0.isAuthenticated$ | async) === false">
         <cmsy-authentication-alert></cmsy-authentication-alert>
     </ng-container>
-
 
     <!-- @TODO LOADING STATE -->
     <ng-container *ngIf="(auth0.isLoading$ | async) === true">
