@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
 
@@ -37,6 +38,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
         redirect_uri: window.location.origin
       }
     }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

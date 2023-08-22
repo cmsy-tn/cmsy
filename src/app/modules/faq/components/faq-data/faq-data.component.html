@@ -1,0 +1,19 @@
+<section id="faq__data_display">
+    <div class="divider"></div>
+    <ng-container *ngIf="isFetchingData === true">
+        <span class="loading loading-dots loading-lg"></span>
+    </ng-container>
+
+    <ng-container *ngIf="isFetchingData === false">
+        <ng-container *ngIf="FAQ_DATA.length !== 0">
+            <main id="faq_gridLayout" class="grid gap-4 w-full h-full mt-8">
+                <ng-container *ngFor="let faq of FAQ_DATA">
+                    <cmsy-faq-card [data]="faq"></cmsy-faq-card>
+                </ng-container>
+            </main>
+        </ng-container>
+        <ng-container *ngIf="FAQ_DATA.length === 0">
+            <h3>NOT DATA FOUND!</h3>
+        </ng-container>
+    </ng-container>
+</section>

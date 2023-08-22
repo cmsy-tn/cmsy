@@ -4,7 +4,7 @@
         <div class="w-4/5 h-[100vh] mx-auto">
             <cmsy-navbar></cmsy-navbar>
 
-            <div class="flex flex-row justify-between items-start">
+            <div class="flex flex-row justify-between items-start mt-8">
                 <cmsy-sidebar></cmsy-sidebar>
                 <main class="w-4/5 h-full">
                     <router-outlet></router-outlet>
@@ -17,7 +17,6 @@
     <ng-container *ngIf="(auth0.isAuthenticated$ | async) === false">
         <cmsy-authentication-alert></cmsy-authentication-alert>
     </ng-container>
-
 
     <!-- @TODO LOADING STATE -->
     <ng-container *ngIf="(auth0.isLoading$ | async) === true">
