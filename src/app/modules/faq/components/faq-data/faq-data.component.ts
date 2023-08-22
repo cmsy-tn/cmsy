@@ -33,7 +33,7 @@ export class FaqDataComponent implements OnInit {
       next: (response: any) => {
         if (response.state && response.action === 'del')
           this.FAQ_DATA = this.FAQ_DATA.filter(element => element.id !== response.id);
-        if (response.state && response.action === 'add')
+        if (response.state && response.action === 'add' || 'update')
           this.fetchData();
       }
     })

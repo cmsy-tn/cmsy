@@ -50,6 +50,7 @@ export class FaqCardComponent {
           action: 'update'
         });
         this.faq_being_worked_on_local_state = false;
+        this.faq_is_in_edit_mode = false;
       }
     })
 
