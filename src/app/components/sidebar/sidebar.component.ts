@@ -11,6 +11,7 @@ export class SidebarComponent {
   routes: any[] = [
     { label: 'dashboard', link: 'dashboard', icon: `house` },
     { label: 'faq', link: 'faq', icon: 'question-circle' },
+    { label: 'services', link: 'services', icon: 'box-seam' },
     { label: 'settings', link: 'settings', icon: 'gear' }
   ];
 
