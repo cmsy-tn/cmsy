@@ -1,0 +1,73 @@
+<div id="service_sidebar_form" class="h-[100vh] w-[40vw] bg-base-200 p-8">
+    <div
+        id="service_form_header"
+        class="w-full flex flex-row justify-between items-center"
+    >
+        <h3>Add a new Service</h3>
+        <ng-container *ngIf="SERVICE_FORM.touched && SERVICE_FORM.valid">
+            <button class="btn btn-success" (click)="saveService()">
+                save
+            </button>
+        </ng-container>
+    </div>
+    <div class="divider"></div>
+    <div id="service_form_body" class="w-full p-4 bg-accent rounded-sm">
+        <form [formGroup]="SERVICE_FORM">
+            <div class="form-control w-full">
+                <label class="label">
+                    <span class="label-text capitalize text-white">
+                        service title
+                    </span>
+                </label>
+                <input
+                    type="text"
+                    placeholder="AWESOME_SERVICE_NAME"
+                    class="input input-bordered w-full"
+                    formControlName="title"
+                />
+            </div>
+            <!-- ************************ -->
+            <div class="form-control w-full mt-4">
+                <label class="label">
+                    <span class="label-text capitalize text-white">
+                        service description
+                    </span>
+                </label>
+                <textarea
+                    class="textarea textarea-bordered w-full"
+                    placeholder="Lorem ipsum dolor sit amet."
+                    formControlName="description"
+                ></textarea>
+            </div>
+            <!-- ************************ -->
+            <div class="form-control w-full mt-4">
+                <label class="label">
+                    <span class="label-text capitalize text-white">
+                        service call to action text
+                    </span>
+                </label>
+                <input
+                    type="text"
+                    placeholder="get in touch!"
+                    class="input input-bordered w-full"
+                    formControlName="call_to_action"
+                />
+            </div>
+            <!-- ************************ -->
+            <div class="form-control w-full mt-4">
+                <label class="label">
+                    <span class="label-text capitalize text-white">
+                        service sub services
+                        <em class="text-primary">(comma serparated)</em>
+                    </span>
+                </label>
+                <input
+                    type="text"
+                    placeholder="subservice_1, subservice_2, subservice_3"
+                    class="input input-bordered w-full"
+                    formControlName="subServices"
+                />
+            </div>
+        </form>
+    </div>
+</div>

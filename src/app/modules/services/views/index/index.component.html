@@ -1,1 +1,30 @@
-<p>index works!</p>
+<div class="drawer drawer-start">
+    <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+
+    <!-- *** HEADER ELEMENT -->
+
+    <div
+        id="service__section_main_header"
+        [class]="
+            [
+                'drawer-content',
+                'w-full',
+                'flex flex-row justify-between items-center'
+            ] | concatclasses
+        "
+    >
+        <h1 class="text-3xl text-white font-sans capitalize">
+            Services you provide
+        </h1>
+        <!-- *** toggle button -->
+        <label for="my-drawer-4" class="drawer-button btn btn-primary">
+            <i class="bi bi-plus-square-dotted text-lg"></i
+        ></label>
+    </div>
+
+    <!-- *** ADD NEW SERVICE SIDE PANEL -->
+    <div class="drawer-side">
+        <label for="my-drawer-4" class="drawer-overlay"></label>
+        <cmsy-service-form></cmsy-service-form>
+    </div>
+</div>
