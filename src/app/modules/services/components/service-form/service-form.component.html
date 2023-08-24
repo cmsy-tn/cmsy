@@ -1,4 +1,7 @@
-<div id="service_sidebar_form" class="h-[100vh] w-[40vw] bg-base-200 p-8">
+<div
+    id="service_sidebar_form"
+    class="h-[100vh] w-[50vw] min-w-[600px] bg-base-200 p-8"
+>
     <div
         id="service_form_header"
         class="w-full flex flex-row justify-between items-center"
@@ -11,7 +14,7 @@
         </ng-container>
     </div>
     <div class="divider"></div>
-    <div id="service_form_body" class="w-full p-4 bg-accent rounded-sm">
+    <div id="service_form_body" class="w-full p-4 bg-[#202020] rounded-sm">
         <form [formGroup]="SERVICE_FORM">
             <div class="form-control w-full">
                 <label class="label">
@@ -67,6 +70,20 @@
                     class="input input-bordered w-full"
                     formControlName="subServices"
                 />
+            </div>
+            <!-- *************** FETCH FAQ? ********* -->
+            <div class="divider"></div>
+            <div class="form-control w-full mt-8">
+                <label class="label cursor-pointer justify-start">
+                    <span class="label-text mr-8">Service has FAQ?</span>
+                    <input
+                        type="checkbox"
+                        class="toggle"
+                        [checked]="false"
+                        (change)="hasFAQs = !hasFAQs"
+                        formControlName="service_has_faq"
+                    />
+                </label>
             </div>
         </form>
     </div>

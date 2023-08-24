@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SERVICETYPE } from 'src/app/types/service.type';
+import { ServiceService } from '../../service.service';
 
 @Component({
   selector: 'cmsy-service-form',
@@ -10,8 +11,12 @@ import { SERVICETYPE } from 'src/app/types/service.type';
 export class ServiceFormComponent implements OnInit {
 
   SERVICE_FORM!: FormGroup;
+  hasFAQs: boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private servicesService: ServiceService
+  ) { }
 
   ngOnInit(): void {
     this.buildServiceForm();
@@ -23,23 +28,20 @@ export class ServiceFormComponent implements OnInit {
       description: [null, Validators.required],
       call_to_action: [null, Validators.required],
       subServices: [null, Validators.required],
+      service_has_faq: [false, Validators.required]
     })
   }
 
   saveService() {
-    const tempFAQ = {
-      id: "string",
-      question: "string",
-      answer: "string",
-      hasCategory: false,
-      category: "string",
-      date: new Date(),
-    }
     const DATA: SERVICETYPE = {
       ...this.SERVICE_FORM.value,
-      service_faqs: [tempFAQ]
+      service_faqs: []
     };
-    console.log(DATA);
-
+    this.servicesService.addElement(DATA).subscribe({
+      next: (response: any) => {
+        if (response)
+          return 1;
+      }
+    })
   }
 }
