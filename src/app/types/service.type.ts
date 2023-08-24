@@ -7,6 +7,7 @@ export interface SERVICETYPE {
     call_to_action: string;
     subServices: string[];
     service_faqs: FAQTYPE[];
+    service_has_faq: boolean;
 }
 
 
