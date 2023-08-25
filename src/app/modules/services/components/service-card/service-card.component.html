@@ -1,13 +1,25 @@
 <div [class]="['service_card', 'w-full rounded-lg p-4', ''] | concatclasses">
-    <div class="service__card_header mb-4">
-        <h3
-            class="text-2xl text-white font-semibold capitalize leading-none tracking-tight"
-        >
-            {{ data.title }}
-        </h3>
-        <small class="text-sm text-[#a2a1aa]">{{
-            data.updated_at | date
-        }}</small>
+    <div
+        class="service__card_header mb-4 w-full flex flex-row items-start justify-between"
+    >
+        <div class="service__card_header_data">
+            <h3
+                class="text-2xl text-white font-semibold capitalize leading-none tracking-tight"
+            >
+                {{ data.title }}
+            </h3>
+            <small class="text-sm text-[#a2a1aa]">
+                {{ data.updated_at | date }}
+            </small>
+        </div>
+        <div class="service__card_actions">
+            <button class="text-xl text-white font-medium">
+                <i class="bi bi-pencil-square"></i>
+            </button>
+            <button class="ml-2 text-xl text-white font-medium">
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
     </div>
     <div class="divider"></div>
     <div class="service__card_body">
@@ -21,41 +33,17 @@
         </div>
     </div>
     <div class="divider"></div>
-    <div
-        class="service__card_footer w-full flex flex-row justify-between items-center"
-    >
-        <button
-            [class]="
-                [
-                    'inline-flex items-center justify-center',
-                    'text-sm text-black font-medium',
-                    'rounded-md h-9 px-4 py-2 bg-white'
-                ] | concatclasses
-            "
-        >
-            Update
-        </button>
+    <div class="service__card_footer w-full">
         <button
             [class]="
                 [
                     'inline-flex items-center justify-center',
                     'text-sm text-white font-medium',
-                    'rounded-md h-9 px-4 py-2 bg-[#27272a]'
+                    'rounded-md w-full h-9 px-4 py-2 bg-[#27272a]'
                 ] | concatclasses
             "
         >
             Link
-        </button>
-        <button
-            [class]="
-                [
-                    'inline-flex items-center justify-center',
-                    'text-sm text-white font-medium',
-                    'rounded-md h-9 px-4 py-2 bg-[#7f1d1d]'
-                ] | concatclasses
-            "
-        >
-            Delete
         </button>
     </div>
 </div>
