@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SERVICETYPE } from 'src/app/types/service.type';
 
 @Component({
   selector: 'cmsy-service-card',
@@ -7,6 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ServiceCardComponent {
 
-  @Input() data: any;
+  @Input() data!: SERVICETYPE;
 
 }
