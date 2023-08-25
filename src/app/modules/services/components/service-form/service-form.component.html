@@ -8,9 +8,14 @@
     >
         <h3>Add a new Service</h3>
         <ng-container *ngIf="SERVICE_FORM.touched && SERVICE_FORM.valid">
-            <button class="btn btn-success" (click)="saveService()">
-                save
-            </button>
+            <ng-container *ngIf="DATA_IS_BEING_SENT === false">
+                <button class="btn btn-success" (click)="saveService()">
+                    save
+                </button>
+            </ng-container>
+            <ng-container *ngIf="DATA_IS_BEING_SENT == true">
+                <span class="loading loading-spinner text-error"></span>
+            </ng-container>
         </ng-container>
     </div>
     <div class="divider"></div>

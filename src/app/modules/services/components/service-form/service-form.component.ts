@@ -12,6 +12,7 @@ export class ServiceFormComponent implements OnInit {
 
   SERVICE_FORM!: FormGroup;
   hasFAQs: boolean = false;
+  DATA_IS_BEING_SENT: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -20,6 +21,9 @@ export class ServiceFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildServiceForm();
+    this.servicesService.DATA_IS_BEING_SENT.subscribe({
+      next: (value: boolean) => { this.DATA_IS_BEING_SENT = value }
+    })
   }
 
   buildServiceForm() {
@@ -33,14 +37,24 @@ export class ServiceFormComponent implements OnInit {
   }
 
   saveService() {
+    // LOADER
+    this.servicesService.DATA_IS_BEING_SENT.next(true);
+    // TMP FORM DATA
     const DATA: SERVICETYPE = {
       ...this.SERVICE_FORM.value,
       service_faqs: []
     };
+    // DATA SENT TO BACKEND
     this.servicesService.addElement(DATA).subscribe({
       next: (response: any) => {
-        if (response)
-          return 1;
+        if (response) {
+          this.servicesService.DATA_IS_BEING_SENT.next(false);
+          this.servicesService.SERVICE_HAS_BEEN_TRIGGERED$.next({
+            state: true,
+            id: '',
+            action: 'add'
+          });
+        }
       }
     })
   }

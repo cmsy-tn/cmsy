@@ -11,7 +11,7 @@ export class ServiceService {
 
   API_URL = environment.API_URL;
   DATA_IS_BEING_SENT = new BehaviorSubject(false);
-  FAQ_HAS_BEEN_TRIGGERED$ = new BehaviorSubject<SERVICEACTIONSTATE>(<SERVICEACTIONSTATE>{ state: false, id: '', action: '' });
+  SERVICE_HAS_BEEN_TRIGGERED$ = new BehaviorSubject<SERVICEACTIONSTATE>(<SERVICEACTIONSTATE>{ state: false, id: '', action: '' });
 
   constructor(private http: HttpClient) { }
 
