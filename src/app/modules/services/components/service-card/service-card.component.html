@@ -32,18 +32,20 @@
             </ng-container>
         </div>
     </div>
-    <div class="divider"></div>
-    <div class="service__card_footer w-full">
-        <button
-            [class]="
-                [
-                    'inline-flex items-center justify-center',
-                    'text-sm text-black font-medium',
-                    'rounded-md w-full h-9 px-4 py-2 bg-white'
-                ] | concatclasses
-            "
-        >
-            Link
-        </button>
-    </div>
+    <ng-container *ngIf="data.service_has_faq === true">
+        <div class="divider"></div>
+        <div class="service__card_footer w-full">
+            <button
+                [class]="
+                    [
+                        'inline-flex items-center justify-center',
+                        'text-sm text-black font-medium',
+                        'rounded-md w-full h-9 px-4 py-2 bg-white'
+                    ] | concatclasses
+                "
+            >
+                Link
+            </button>
+        </div>
+    </ng-container>
 </div>
