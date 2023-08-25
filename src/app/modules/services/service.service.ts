@@ -15,23 +15,23 @@ export class ServiceService {
 
   constructor(private http: HttpClient) { }
 
-  addElement(faq: SERVICETYPE) {
-    return this.http.post(`${this.API_URL}/services/`, faq);
+  addElement(service: SERVICETYPE) {
+    return this.http.post(`${this.API_URL}/services/`, service);
   }
 
   getElements(): any {
     return this.http.get(`${this.API_URL}/services`);
   }
 
-  getElement(faq_id: string): any {
-    return this.http.get(`${this.API_URL}/services/${faq_id}`);
+  getElement(service_id: string): any {
+    return this.http.get(`${this.API_URL}/services/${service_id}`);
   }
 
-  // updateElement(faq_id: string, payload: UPDATED_FAQ) {
-  //   return this.http.put(`${this.API_URL}/services/${faq_id}`, payload);
+  // updateElement(service_id: string, payload: UPDATED_FAQ) {
+  //   return this.http.put(`${this.API_URL}/services/${service_id}`, payload);
   // }
 
-  deleteElement(faq_id: string): any {
-    return this.http.delete(`${this.API_URL}/services/${faq_id}`);
+  deleteElement(service_id: string): any {
+    return this.http.delete(`${this.API_URL}/services/${service_id}`);
   }
 }
