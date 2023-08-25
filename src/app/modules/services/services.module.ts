@@ -7,13 +7,15 @@ import { ServicesRoutingModule } from './services-routing.module';
 import { IndexComponent } from './views/index/index.component';
 import { ServiceFormComponent } from './components/service-form/service-form.component';
 import { ServiceCardComponent } from './components/service-card/service-card.component';
+import { ServiceDataComponent } from './components/service-data/service-data.component';
 
 
 @NgModule({
   declarations: [
     IndexComponent,
     ServiceFormComponent,
-    ServiceCardComponent
+    ServiceCardComponent,
+    ServiceDataComponent
   ],
   imports: [
     CommonModule,

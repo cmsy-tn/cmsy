@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'cmsy-service-card',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./service-card.component.scss']
 })
 export class ServiceCardComponent {
+
+  @Input() data: any;
 
 }
