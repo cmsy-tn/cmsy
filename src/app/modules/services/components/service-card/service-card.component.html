@@ -16,10 +16,16 @@
             </small>
         </div>
         <div class="service__card_actions">
-            <button class="text-xl text-white font-medium">
+            <button
+                class="text-xl text-white font-medium"
+                (click)="update(data.id)"
+            >
                 <i class="bi bi-pencil-square"></i>
             </button>
-            <button class="ml-2 text-xl text-white font-medium">
+            <button
+                class="ml-2 text-xl text-white font-medium"
+                (click)="delete(data.id)"
+            >
                 <i class="bi bi-trash"></i>
             </button>
         </div>

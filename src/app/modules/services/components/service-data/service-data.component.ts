@@ -21,7 +21,8 @@ export class ServiceDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkForPostActionRouting();
-    this.fetchData()
+    this.fetchData();
+    this.checkForUpdates(); // keeps listening for CRUD actions
   }
 
   checkForPostActionRouting() {
@@ -42,4 +43,14 @@ export class ServiceDataComponent implements OnInit {
     })
   }
 
+  checkForUpdates() {
+    this.servicesService.SERVICE_HAS_BEEN_TRIGGERED$.subscribe({
+      next: (response: any) => {
+        if (response.state && response.action === 'del')
+          this.SERVICE_DATA = this.SERVICE_DATA.filter(element => element.id !== response.id);
+        if (response.state && response.action === 'update')
+          this.fetchData();
+      }
+    })
+  }
 }
