@@ -16,18 +16,23 @@
             </small>
         </div>
         <div class="service__card_actions">
-            <button
-                class="text-xl text-white font-medium"
-                (click)="update(data.id)"
-            >
-                <i class="bi bi-pencil-square"></i>
-            </button>
-            <button
-                class="ml-2 text-xl text-white font-medium"
-                (click)="delete(data.id)"
-            >
-                <i class="bi bi-trash"></i>
-            </button>
+            <ng-container *ngIf="SERVICE_LOCAL_STATE === true">
+                <span class="loading loading-spinner text-error"></span>
+            </ng-container>
+            <ng-container *ngIf="SERVICE_LOCAL_STATE === false">
+                <button
+                    class="text-xl text-white font-medium"
+                    (click)="update(data.id)"
+                >
+                    <i class="bi bi-pencil-square"></i>
+                </button>
+                <button
+                    class="ml-2 text-xl text-white font-medium"
+                    (click)="delete(data.id)"
+                >
+                    <i class="bi bi-trash"></i>
+                </button>
+            </ng-container>
         </div>
     </div>
     <div class="divider"></div>

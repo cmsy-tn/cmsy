@@ -11,10 +11,12 @@ export class ServiceCardComponent {
 
   @Input() data!: SERVICETYPE;
   @Input() postActionID!: string;
+  SERVICE_LOCAL_STATE: boolean = false;
 
   constructor(private serviceService: ServiceService) { }
 
   delete(service_id: string) {
+    this.SERVICE_LOCAL_STATE = true;
     this.serviceService.deleteElement(service_id).subscribe({
       next: (response: number) => {
         if (response !== 0) {
@@ -24,6 +26,7 @@ export class ServiceCardComponent {
             id: service_id,
             action: 'del'
           });
+          this.SERVICE_LOCAL_STATE = false;
         }
       }
     })
