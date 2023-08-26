@@ -1,4 +1,7 @@
-<div [class]="['service_card', 'w-full rounded-lg p-4', ''] | concatclasses">
+<div
+    [class]="['service_card', 'w-full rounded-lg p-4'] | concatclasses"
+    [ngClass]="postActionID === data.id ? 'border border-green-400' : ''"
+>
     <div
         class="service__card_header mb-4 w-full flex flex-row items-start justify-between"
     >

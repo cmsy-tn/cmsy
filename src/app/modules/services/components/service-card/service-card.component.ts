@@ -9,5 +9,6 @@ import { SERVICETYPE } from 'src/app/types/service.type';
 export class ServiceCardComponent {
 
   @Input() data!: SERVICETYPE;
+  @Input() postActionID!: string;
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SERVICETYPE } from 'src/app/types/service.type';
 import { ServiceService } from '../../service.service';
 
@@ -16,6 +17,7 @@ export class ServiceFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private servicesService: ServiceService
   ) { }
 
@@ -53,6 +55,9 @@ export class ServiceFormComponent implements OnInit {
             state: true,
             id: '',
             action: 'add'
+          });
+          this.router.navigate(['/services'], { queryParams: { created: response.id } }).then(() => {
+            window.location.reload();
           });
         }
       }

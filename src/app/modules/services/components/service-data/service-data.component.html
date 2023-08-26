@@ -7,7 +7,10 @@
         <ng-container *ngIf="SERVICE_DATA.length !== 0">
             <main id="service_gridLayout" class="grid gap-4 w-full h-full mt-8">
                 <ng-container *ngFor="let faq of SERVICE_DATA">
-                    <cmsy-service-card [data]="faq"></cmsy-service-card>
+                    <cmsy-service-card
+                        [data]="faq"
+                        [postActionID]="POST_ACTION_ELEMENT"
+                    ></cmsy-service-card>
                 </ng-container>
             </main>
         </ng-container>

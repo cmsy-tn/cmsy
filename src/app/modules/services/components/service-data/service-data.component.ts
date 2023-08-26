@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../service.service';
 import { SERVICETYPE } from 'src/app/types/service.type';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cmsy-service-data',
@@ -11,11 +12,24 @@ export class ServiceDataComponent implements OnInit {
 
   SERVICE_DATA!: SERVICETYPE[];
   isFetchingData: boolean = false;
+  POST_ACTION_ELEMENT: string = '';
 
-  constructor(private servicesService: ServiceService) { }
+  constructor(
+    private servicesService: ServiceService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.checkForPostActionRouting();
     this.fetchData()
+  }
+
+  checkForPostActionRouting() {
+    this.route.queryParams.subscribe({
+      next: (value: any) => {
+        if (value) this.POST_ACTION_ELEMENT = value.created
+      }
+    })
   }
 
   fetchData() {
