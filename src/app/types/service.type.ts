@@ -5,8 +5,11 @@ export interface SERVICETYPE {
     title: string;
     description: string;
     call_to_action: string;
-    subServices: string[];
+    subServices: string;
     service_faqs: FAQTYPE[];
+    service_has_faq: boolean;
+    created_at?: Date;
+    updated_at?: Date;
 }
 
 
