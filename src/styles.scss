@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import "/node_modules/ng-zorro-antd/ng-zorro-antd.dark.min.css";
 
 // GLOBAL VARIABLES
@@ -11,4 +11,5 @@
     // COLORS
     --dark-1: #1E1E1E;
     --dark-2: #242424;
+    --light-1: #333333;
 }
