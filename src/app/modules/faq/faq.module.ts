@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FaqRoutingModule } from './faq-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgZorroModule } from 'src/app/ng-zorro.module';
 // CUSTOM VIEWS & COMPONENTS
 import { IndexComponent } from './views/index/index.component';
 import { FaqCardComponent } from './components/faq-card/faq-card.component';
@@ -23,7 +24,8 @@ import { FaqFormComponent } from './components/faq-form/faq-form.component';
     FaqRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgZorroModule
   ]
 })
 export class FaqModule { }
