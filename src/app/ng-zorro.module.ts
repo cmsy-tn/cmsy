@@ -7,6 +7,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 
 
@@ -20,7 +21,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
         NzAvatarModule,
         NzDrawerModule,
         NzTabsModule,
-        NzCardModule
+        NzCardModule,
+        NzModalModule
     ]
 })
 export class NgZorroModule { }

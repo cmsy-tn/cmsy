@@ -4,8 +4,21 @@
         [moduleDescription]="
             'this module allows your to manage FAQ in your portfolio.'
         "
+        (triggerFormEvent)="createNewFAQModalIsVisible = true"
     ></cmsy-module-header>
-
-    <!-- <cmsy-faq-form></cmsy-faq-form> -->
     <cmsy-faq-data></cmsy-faq-data>
 </section>
+
+<!-- ADD NEW MODAL -->
+<nz-modal [(nzVisible)]="createNewFAQModalIsVisible" nzTitle="Create new FAQ">
+    <ng-container *nzModalContent>
+        <cmsy-faq-form></cmsy-faq-form>
+    </ng-container>
+
+    <div *nzModalFooter>
+        <button nz-button nzType="default" (click)="handleCancel()">
+            Cancel
+        </button>
+        <button nz-button nzType="primary" (click)="handleOk()">Save</button>
+    </div>
+</nz-modal>

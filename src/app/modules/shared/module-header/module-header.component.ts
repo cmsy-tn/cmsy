@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'cmsy-module-header',
@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class ModuleHeaderComponent {
   @Input() moduleName!: string;
   @Input() moduleDescription!: string;
+  @Output() triggerFormEvent = new EventEmitter<boolean>();
 }

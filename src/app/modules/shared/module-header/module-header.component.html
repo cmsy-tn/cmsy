@@ -4,6 +4,12 @@
             <h1>{{ moduleName }}</h1>
             <p>{{ moduleDescription }}</p>
         </div>
-        <button nz-button nzType="primary">Create</button>
+        <button
+            nz-button
+            nzType="primary"
+            (click)="triggerFormEvent.emit(true)"
+        >
+            Create
+        </button>
     </div>
 </div>

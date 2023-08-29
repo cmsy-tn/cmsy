@@ -10,6 +10,7 @@ import { FaqService } from '../../faq.service';
 export class IndexComponent implements OnInit {
 
   DATA_IS_BEING_SENT = false;
+  createNewFAQModalIsVisible = false;
 
   constructor(private faqService: FaqService) { }
 
@@ -19,5 +20,13 @@ export class IndexComponent implements OnInit {
         this.DATA_IS_BEING_SENT = value;
       }
     })
+  }
+
+  handleOk(): void {
+    this.createNewFAQModalIsVisible = false;
+  }
+
+  handleCancel(): void {
+    this.createNewFAQModalIsVisible = false;
   }
 }
