@@ -1,12 +1,12 @@
-<section class="w-full h-[100vh]">
+<section id="main_layout_container">
     <!-- USER IS LOGGED IN -->
     <ng-container *ngIf="(auth0.isAuthenticated$ | async) === true">
-        <div class="w-full h-[100vh]">
+        <div id="authenticated_view_container">
             <cmsy-navbar></cmsy-navbar>
 
-            <div class="flex flex-row justify-between items-start">
+            <div>
                 <cmsy-sidebar></cmsy-sidebar>
-                <main class="w-full h-full py-4 px-8">
+                <main>
                     <router-outlet></router-outlet>
                 </main>
             </div>
