@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FaqService } from '../../faq.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { FaqService } from '../../faq.service';
   styleUrls: ['./faq-form.component.scss']
 })
 export class FaqFormComponent implements OnInit {
+  @Output() triggerCloseEvent = new EventEmitter<boolean>();
   FAQ_FORM!: FormGroup;
+  DATA_IS_BEING_SENT = false;
 
   constructor(
     private faqService: FaqService,
@@ -16,46 +18,27 @@ export class FaqFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.constructForm();
-  }
-
-  constructForm() {
     this.FAQ_FORM = this.fb.group({
-      FAQ: this.fb.array([])
-    })
-  }
-
-  get GET_FORM_ARRAY(): FormArray {
-    return this.FAQ_FORM.get('FAQ') as FormArray;
-  }
-
-  addFormGroupToArray() {
-    const NEW_FORM_GROUP = this.fb.group({
       question: [null, Validators.required],
       answer: [null, Validators.required],
     });
-
-    this.GET_FORM_ARRAY.push(NEW_FORM_GROUP);
-  }
-
-  deleteGroupFromArray(index: number) {
-    this.GET_FORM_ARRAY.removeAt(index);
   }
 
   saveFAQS() {
+    this.DATA_IS_BEING_SENT = true;
     this.faqService.DATA_IS_BEING_SENT.next(true); // updating a shared status to lock form
-    const data = this.FAQ_FORM.value.FAQ;
+    const data = this.FAQ_FORM.value;
 
     this.faqService.addElement(data).subscribe({
       next: (response: any) => {
-        if (response === 1) {
-          this.faqService.DATA_IS_BEING_SENT.next(false);
-          this.faqService.FAQ_HAS_BEEN_TRIGGERED$.next({
-            state: true,
-            id: '',
-            action: 'add'
-          });
-        }
+        this.faqService.DATA_IS_BEING_SENT.next(false);
+        this.faqService.FAQ_HAS_BEEN_TRIGGERED$.next({
+          state: true,
+          id: '',
+          action: 'add'
+        });
+        this.DATA_IS_BEING_SENT = false;
+        this.triggerCloseEvent.emit(true); // close modal
       }
     })
   }

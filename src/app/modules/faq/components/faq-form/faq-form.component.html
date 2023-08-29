@@ -1,89 +1,46 @@
-<!-- HEADER SECTION -->
+<form [formGroup]="FAQ_FORM" nz-form [nzLayout]="'vertical'">
+    <nz-form-item>
+        <nz-form-label [nzSpan]="14">Question to display</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+            <input
+                nz-input
+                placeholder="Question"
+                formControlName="question"
+                id="question_input"
+            />
+        </nz-form-control>
+    </nz-form-item>
 
-<div
-    id="faq__section_main_header"
-    class="w-full flex flex-row justify-between items-center"
->
-    <h1 class="text-3xl text-white font-sans capitalize">
-        Frequently Asked Questions
-    </h1>
-    <button
-        class="btn btn-outline btn-success capitalize"
-        (click)="saveFAQS()"
-        *ngIf="FAQ_FORM.touched && FAQ_FORM.valid"
-    >
-        save
-    </button>
-</div>
-<!-- CRUD FORM SECTION -->
-<form [formGroup]="FAQ_FORM">
-    <div
-        formArrayName="FAQ"
-        id="faq_gridLayout"
-        class="grid gap-4 w-full h-full mt-8"
-    >
-        <!-- YOUR FORM CONTROLS GO HERE -->
+    <nz-form-item>
+        <nz-form-label>Question's answer</nz-form-label>
+        <nz-form-control>
+            <textarea
+                nz-input
+                [nzAutosize]="{ minRows: 3, maxRows: 5 }"
+                placeholder="You need to press that button and that other one, then..."
+                id="answer_input"
+                formControlName="answer"
+            ></textarea>
+        </nz-form-control>
+    </nz-form-item>
 
-        <ng-container
-            *ngFor="let FGROUP of GET_FORM_ARRAY.controls; let i = index"
-        >
-            <div [formGroupName]="i">
-                <div
-                    [class]="
-                        [
-                            'faq__card',
-                            'p-4 rounded-lg border border-[#3d3d3d]',
-                            ' bg-[#242424] text-primary-content'
-                        ] | concatclasses
-                    "
-                >
-                    <div
-                        class="faq__card_header w-full flex flex-row justify-end"
-                    >
-                        <i
-                            class="bi bi-trash cursor-pointer"
-                            (click)="deleteGroupFromArray(i)"
-                        ></i>
-                    </div>
-                    <!-- ACTUAL FAQ -->
-                    <div
-                        class="faq__card_content w-full flex flex-col justify-start gap-4"
-                    >
-                        <label for="question_input">Question to display</label>
-                        <input
-                            type="text"
-                            placeholder="How to do that thing?"
-                            id="question_input"
-                            class="input input-bordered input-accent w-full"
-                            formControlName="question"
-                        />
-
-                        <label for="answer_input">Answer to display</label>
-                        <textarea
-                            id="answer_input"
-                            class="textarea textarea-accent resize-none"
-                            name="answer_input"
-                            formControlName="answer"
-                            cols="30"
-                            rows="10"
-                            placeholder="You need to press that button and that other one, then..."
-                        ></textarea>
-                    </div>
-                </div>
-            </div>
-        </ng-container>
-
+    <nz-divider></nz-divider>
+    <div id="create_faq_modal_footer">
         <button
-            [class]="
-                [
-                    'w-full min-h-[200px]',
-                    'bg-[#0d0d0d] border border-[#3d3d3d] rounded-lg',
-                    'flex flex-row items-center justify-center'
-                ] | concatclasses
-            "
-            (click)="addFormGroupToArray()"
+            nz-button
+            nzType="default"
+            (click)="triggerCloseEvent.emit(true)"
         >
-            <i class="bi bi-plus-square-dotted text-5xl"></i>
+            Cancel
+        </button>
+        <button
+            nz-button
+            nzType="primary"
+            [nzLoading]="DATA_IS_BEING_SENT"
+            [disabled]="!FAQ_FORM.touched || !FAQ_FORM.valid"
+            (click)="saveFAQS()"
+        >
+            save
         </button>
     </div>
 </form>

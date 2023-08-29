@@ -10,15 +10,12 @@
 </section>
 
 <!-- ADD NEW MODAL -->
-<nz-modal [(nzVisible)]="createNewFAQModalIsVisible" nzTitle="Create new FAQ">
+<nz-modal
+    [(nzVisible)]="createNewFAQModalIsVisible"
+    nzTitle="Create new FAQ"
+    [nzFooter]="null"
+>
     <ng-container *nzModalContent>
-        <cmsy-faq-form></cmsy-faq-form>
+        <cmsy-faq-form (triggerCloseEvent)="createNewFAQModalIsVisible=false"></cmsy-faq-form>
     </ng-container>
-
-    <div *nzModalFooter>
-        <button nz-button nzType="default" (click)="handleCancel()">
-            Cancel
-        </button>
-        <button nz-button nzType="primary" (click)="handleOk()">Save</button>
-    </div>
 </nz-modal>

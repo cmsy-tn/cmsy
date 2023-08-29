@@ -21,12 +21,4 @@ export class IndexComponent implements OnInit {
       }
     })
   }
-
-  handleOk(): void {
-    this.createNewFAQModalIsVisible = false;
-  }
-
-  handleCancel(): void {
-    this.createNewFAQModalIsVisible = false;
-  }
 }

@@ -8,6 +8,8 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 
 
@@ -22,7 +24,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
         NzDrawerModule,
         NzTabsModule,
         NzCardModule,
-        NzModalModule
+        NzModalModule,
+        NzInputModule,
+        NzFormModule
     ]
 })
 export class NgZorroModule { }
