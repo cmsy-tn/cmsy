@@ -1,3 +1,7 @@
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +19,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
