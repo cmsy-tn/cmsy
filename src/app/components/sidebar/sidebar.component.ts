@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
 
   routes: any[] = [
-    { label: 'dashboard', link: 'dashboard', icon: `house` },
+    { label: 'dashboard', link: 'dashboard', icon: `home` },
     { label: 'faq', link: 'faq', icon: 'question-circle' },
-    { label: 'services', link: 'services', icon: 'box-seam' },
-    { label: 'settings', link: 'settings', icon: 'gear' }
+    { label: 'services', link: 'services', icon: 'heat-map' },
+    { label: 'settings', link: 'settings', icon: 'control' }
   ];
 
   constructor(private router: Router) { }

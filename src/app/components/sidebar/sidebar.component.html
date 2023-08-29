@@ -1,11 +1,17 @@
 <div id="authenticated_sidebar">
-    <ul class="menu">
+    <div id="branding">
+        <h1 routerLink="/">CMSY</h1>
+    </div>
+    <div class="divider"><nz-divider></nz-divider></div>
+    <ul nz-menu nzTheme="dark">
         <ng-container *ngFor="let linkGroup of routes">
-            <li (click)="navigateToRoute(linkGroup.label)">
-                <a class="uppercase">
-                    <i [class]="'text-xl bi bi-' + linkGroup.icon"></i>
-                    {{ linkGroup.label }}
-                </a>
+            <li nz-menu-item (click)="navigateToRoute(linkGroup.label)">
+                <span
+                    nz-icon
+                    [nzType]="linkGroup.icon"
+                    nzTheme="outline"
+                ></span>
+                <span>{{ linkGroup.label }}</span>
             </li>
         </ng-container>
     </ul>
