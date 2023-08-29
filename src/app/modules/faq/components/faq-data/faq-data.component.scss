@@ -1,6 +1,10 @@
-#faq_gridLayout {
-    width: 100%;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+#faq__data_display_section {
+    padding: 2rem;
+
+    #faq_gridLayout {
+        width: 100%;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 }
