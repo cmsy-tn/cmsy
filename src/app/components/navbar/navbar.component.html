@@ -1,14 +1,11 @@
 <div id="authenticated_navbar">
-    <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl">CMSY</a>
+    <div id="notification_trigger">
+        <span nz-icon nzType="bell" nzTheme="outline"></span>
     </div>
-    <label for="my-drawer">
-        <img
-            [src]="(auth0.user$ | async)?.picture"
-            alt="user profile picture"
-            class="w-[40px] h-[40px] rounded-[50%] cursor-pointer"
-        />
-    </label>
+    <nz-avatar
+        nzIcon="user"
+        [nzSrc]="(auth0.user$ | async)?.picture"
+    ></nz-avatar>
 </div>
 
 <!-- <cmsy-user-profile></cmsy-user-profile> -->

@@ -3,6 +3,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 
 
@@ -12,7 +13,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
         NzButtonModule,
         NzIconModule,
         NzDividerModule,
-        NzMenuModule
+        NzMenuModule,
+        NzAvatarModule
     ]
 })
 export class NgZorroModule { }
