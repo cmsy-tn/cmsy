@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // CUSTOM VIEWS & COMPONENTS
 import { IndexComponent } from './views/index/index.component';
 import { FaqCardComponent } from './components/faq-card/faq-card.component';
-import { SharedModule } from "../shared/shared/shared.module";
+import { SharedModule } from "../shared/shared.module";
 import { FaqDataComponent } from './components/faq-data/faq-data.component';
 import { FaqFormComponent } from './components/faq-form/faq-form.component';
 
