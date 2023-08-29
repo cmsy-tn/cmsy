@@ -2,12 +2,11 @@
     <!-- USER IS LOGGED IN -->
     <ng-container *ngIf="(auth0.isAuthenticated$ | async) === true">
         <div id="authenticated_view_container">
-            <cmsy-navbar></cmsy-navbar>
-
-            <div>
-                <cmsy-sidebar></cmsy-sidebar>
+            <cmsy-sidebar></cmsy-sidebar>
+            <div id="authenticated_view_outlet">
+                <cmsy-navbar></cmsy-navbar>
                 <main>
-                    <router-outlet></router-outlet>
+                    <!-- <router-outlet></router-outlet> -->
                 </main>
             </div>
         </div>
