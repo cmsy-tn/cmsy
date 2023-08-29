@@ -4,6 +4,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 
 
@@ -14,7 +15,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
         NzIconModule,
         NzDividerModule,
         NzMenuModule,
-        NzAvatarModule
+        NzAvatarModule,
+        NzDrawerModule
     ]
 })
 export class NgZorroModule { }

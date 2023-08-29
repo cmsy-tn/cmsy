@@ -5,7 +5,18 @@
     <nz-avatar
         nzIcon="user"
         [nzSrc]="(auth0.user$ | async)?.picture"
+        (click)="open()"
     ></nz-avatar>
 </div>
 
-<!-- <cmsy-user-profile></cmsy-user-profile> -->
+<nz-drawer
+    [nzClosable]="false"
+    [nzVisible]="visible"
+    nzPlacement="right"
+    nzTitle="Basic Drawer"
+    (nzOnClose)="close()"
+>
+    <ng-container *nzDrawerContent>
+        <cmsy-user-profile></cmsy-user-profile>
+    </ng-container>
+</nz-drawer>
