@@ -5,14 +5,32 @@
     ></nz-card-meta>
 </nz-card>
 <!-- ACTOINS -->
+
 <ng-template #actionEdit>
-    <span nz-icon nzType="edit" (click)="editFAQ(data.id)"></span>
+    <span
+        nz-icon
+        nzType="edit"
+        *ngIf="faq_being_worked_on_local_state === false"
+        (click)="editFAQ(data.id)"
+    ></span>
+    <span
+        nz-icon
+        [nzType]="'sync'"
+        [nzSpin]="true"
+        *ngIf="faq_being_worked_on_local_state === true"
+    ></span>
 </ng-template>
 <ng-template #actionDelete>
-    <ng-container *ngIf="faq_being_worked_on_local_state === true">
-        <span nz-icon [nzType]="'sync'" [nzSpin]="true"></span>
-    </ng-container>
-    <ng-container *ngIf="faq_being_worked_on_local_state === false">
-        <span nz-icon nzType="delete" (click)="deleteFAQ(data.id)"></span>
-    </ng-container>
+    <span
+        nz-icon
+        nzType="delete"
+        *ngIf="faq_being_worked_on_local_state === false"
+        (click)="deleteFAQ(data.id)"
+    ></span>
+    <span
+        nz-icon
+        [nzType]="'sync'"
+        [nzSpin]="true"
+        *ngIf="faq_being_worked_on_local_state === true"
+    ></span>
 </ng-template>
