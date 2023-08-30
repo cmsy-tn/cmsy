@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgZorroModule } from 'src/app/ng-zorro.module';
+import { SharedModule } from '../shared/shared.module';
+import { IndexComponent } from './views/index/index.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    IndexComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgZorroModule,
+    SharedModule
   ]
 })
 export class BlogModule { }
