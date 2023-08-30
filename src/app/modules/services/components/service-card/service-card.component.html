@@ -1,4 +1,4 @@
-<div
+<!-- <div
     [class]="['service_card', 'w-full rounded-lg p-4'] | concatclasses"
     [ngClass]="postActionID === data.id ? 'border border-green-400' : ''"
 >
@@ -62,4 +62,30 @@
             </button>
         </div>
     </ng-container>
-</div>
+</div> -->
+
+<nz-card>
+    <nz-card-meta
+        [nzTitle]="cardTitleTemplate"
+        [nzDescription]="cardBodyTemplate"
+    ></nz-card-meta>
+    <ng-template #cardBodyTemplate> </ng-template>
+    <ng-template #cardTitleTemplate>
+        <h3>test title</h3>
+        <h6>{{ data.updated_at | date }}</h6>
+    </ng-template>
+    <!-- ACTONS FOR DISPLAY MODE -->
+    <nz-divider></nz-divider>
+    <div id="edit_service_card_footer">
+        <div id="footer_actions" *ngIf="SERVICE_LOCAL_STATE === false">
+            <span nz-icon nzType="edit"></span>
+            <span nz-icon nzType="delete" (click)="delete(data.id)"></span>
+        </div>
+        <span
+            nz-icon
+            [nzType]="'sync'"
+            [nzSpin]="true"
+            *ngIf="SERVICE_LOCAL_STATE === true"
+        ></span>
+    </div>
+</nz-card>
