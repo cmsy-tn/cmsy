@@ -3,10 +3,14 @@
         <!-- DISPLAYED IN SHOW MODE -->
         <ng-container *ngIf="faq_is_in_edit_mode === false">
             <nz-card-meta
-                [nzTitle]="data.question"
+                [nzTitle]="cardTitleTemplate"
                 [nzDescription]="data.answer"
             ></nz-card-meta>
         </ng-container>
+        <ng-template #cardTitleTemplate>
+            <h3>{{ data.question }}</h3>
+            <h6>{{ data.updated_at | date }}</h6>
+        </ng-template>
         <!-- ACTONS FOR DISPLAY MODE -->
         <nz-divider></nz-divider>
         <div id="edit_faq_card_footer">
@@ -46,6 +50,8 @@
                         nz-input
                         placeholder="Question"
                         id="question_input"
+                        #question_updated
+                        [value]="data.question"
                     />
                 </nz-form-control>
             </nz-form-item>
@@ -58,6 +64,8 @@
                         [nzAutosize]="{ minRows: 3, maxRows: 5 }"
                         placeholder="You need to press that button and that other one, then..."
                         id="answer_input"
+                        #answer_updated*
+                        [value]="data.answer"
                     ></textarea>
                 </nz-form-control>
             </nz-form-item>
