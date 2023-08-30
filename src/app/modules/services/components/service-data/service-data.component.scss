@@ -1,3 +1,6 @@
 #service_gridLayout {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }

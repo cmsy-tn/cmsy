@@ -1,16 +1,13 @@
 <section id="service__data_display">
     <ng-container *ngIf="isFetchingData === true">
-        <span class="loading loading-dots loading-lg"></span>
+        <span nz-icon [nzType]="'sync'" [nzSpin]="true"></span>
     </ng-container>
 
     <ng-container *ngIf="isFetchingData === false">
         <ng-container *ngIf="SERVICE_DATA.length !== 0">
-            <main id="service_gridLayout" class="grid gap-4 w-full h-full mt-8">
+            <main id="service_gridLayout">
                 <ng-container *ngFor="let faq of SERVICE_DATA">
-                    <cmsy-service-card
-                        [data]="faq"
-                        [postActionID]="POST_ACTION_ELEMENT"
-                    ></cmsy-service-card>
+                    <cmsy-service-card [data]="faq"></cmsy-service-card>
                 </ng-container>
             </main>
         </ng-container>

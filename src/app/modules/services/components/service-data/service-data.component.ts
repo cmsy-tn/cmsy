@@ -48,7 +48,7 @@ export class ServiceDataComponent implements OnInit {
       next: (response: any) => {
         if (response.state && response.action === 'del')
           this.SERVICE_DATA = this.SERVICE_DATA.filter(element => element.id !== response.id);
-        if (response.state && response.action === 'update')
+        if (response.state && response.action === 'update' || 'add')
           this.fetchData();
       }
     })
