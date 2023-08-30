@@ -9,5 +9,17 @@
     <section class="module_main_display_area">
         <cmsy-service-data></cmsy-service-data>
     </section>
-    <!-- <cmsy-service-form></cmsy-service-form>     -->
 </section>
+
+<!-- ADD NEW MODAL -->
+<nz-modal
+    [(nzVisible)]="createNewServiceModalIsVisible"
+    nzTitle="Create new Service"
+    [nzFooter]="null"
+>
+    <ng-container *nzModalContent>
+        <cmsy-service-form
+            (triggerCloseEvent)="createNewServiceModalIsVisible = false"
+        ></cmsy-service-form>
+    </ng-container>
+</nz-modal>

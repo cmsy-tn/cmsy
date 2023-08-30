@@ -10,6 +10,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 
 
@@ -26,7 +27,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
         NzCardModule,
         NzModalModule,
         NzInputModule,
-        NzFormModule
+        NzFormModule,
+        NzCheckboxModule
     ]
 })
 export class NgZorroModule { }

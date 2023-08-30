@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SERVICETYPE } from 'src/app/types/service.type';
@@ -14,6 +14,7 @@ export class ServiceFormComponent implements OnInit {
   SERVICE_FORM!: FormGroup;
   hasFAQs: boolean = false;
   DATA_IS_BEING_SENT: boolean = false;
+  @Output() triggerCloseEvent = new EventEmitter<boolean>();
 
   constructor(
     private fb: FormBuilder,
@@ -55,9 +56,6 @@ export class ServiceFormComponent implements OnInit {
             state: true,
             id: '',
             action: 'add'
-          });
-          this.router.navigate(['/services'], { queryParams: { created: response.id } }).then(() => {
-            window.location.reload();
           });
         }
       }
