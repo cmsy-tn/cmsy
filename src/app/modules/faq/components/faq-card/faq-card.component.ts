@@ -11,6 +11,8 @@ export class FaqCardComponent {
   @Input() data: any;
   faq_is_in_edit_mode: boolean = false;
   faq_being_worked_on_local_state = false;
+
+  // EDIT MODE
   @ViewChild('question_updated') question_updated!: ElementRef;
   @ViewChild('answer_updated') answer_updated!: ElementRef;
 
@@ -35,7 +37,6 @@ export class FaqCardComponent {
 
   editFAQ(faq_id: string) {
     this.faq_being_worked_on_local_state = true;
-
     let updated_values: UPDATED_FAQ = {
       question: this.question_updated.nativeElement.value,
       answer: this.answer_updated.nativeElement.value,

@@ -10,6 +10,7 @@ import { FaqService } from '../../faq.service';
 export class IndexComponent implements OnInit {
 
   DATA_IS_BEING_SENT = false;
+  createNewFAQModalIsVisible = false;
 
   constructor(private faqService: FaqService) { }
 

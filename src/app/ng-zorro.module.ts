@@ -5,6 +5,11 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 
 
@@ -16,7 +21,12 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
         NzDividerModule,
         NzMenuModule,
         NzAvatarModule,
-        NzDrawerModule
+        NzDrawerModule,
+        NzTabsModule,
+        NzCardModule,
+        NzModalModule,
+        NzInputModule,
+        NzFormModule
     ]
 })
 export class NgZorroModule { }
