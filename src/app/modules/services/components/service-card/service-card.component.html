@@ -1,32 +1,138 @@
-<nz-card>
-    <nz-card-meta
-        [nzTitle]="cardTitleTemplate"
-        [nzDescription]="cardBodyTemplate"
-    ></nz-card-meta>
-    <ng-template #cardTitleTemplate>
-        <h3>{{ data.title }}</h3>
-        <h6>{{ data.updated_at | date }}</h6>
-    </ng-template>
-    <ng-template #cardBodyTemplate>
-        <p>{{ data.description }}</p>
-        <div class="service__chips">
-            <ng-container *ngFor="let chip of data.subServices.split(',')">
-                <span class="chip">{{ chip }}</span>
-            </ng-container>
+<ng-container *ngIf="SERVICE_IS_IN_EDIT_MODE === false">
+    <nz-card>
+        <nz-card-meta
+            [nzTitle]="cardTitleTemplate"
+            [nzDescription]="cardBodyTemplate"
+        ></nz-card-meta>
+        <ng-template #cardTitleTemplate>
+            <h3>{{ data.title }}</h3>
+            <h6>{{ data.updated_at | date }}</h6>
+        </ng-template>
+        <ng-template #cardBodyTemplate>
+            <p>{{ data.description }}</p>
+            <div class="service__chips">
+                <ng-container *ngFor="let chip of data.subServices.split(',')">
+                    <span class="chip">{{ chip }}</span>
+                </ng-container>
+            </div>
+        </ng-template>
+        <!-- ACTONS FOR DISPLAY MODE -->
+        <nz-divider></nz-divider>
+        <div id="edit_service_card_footer">
+            <div id="footer_actions" *ngIf="SERVICE_LOCAL_STATE === false">
+                <span
+                    nz-icon
+                    nzType="edit"
+                    (click)="SERVICE_IS_IN_EDIT_MODE = true"
+                ></span>
+                <span nz-icon nzType="delete" (click)="delete(data.id)"></span>
+            </div>
+            <span
+                nz-icon
+                [nzType]="'sync'"
+                [nzSpin]="true"
+                *ngIf="SERVICE_LOCAL_STATE === true"
+            ></span>
         </div>
-    </ng-template>
-    <!-- ACTONS FOR DISPLAY MODE -->
-    <nz-divider></nz-divider>
-    <div id="edit_service_card_footer">
-        <div id="footer_actions" *ngIf="SERVICE_LOCAL_STATE === false">
-            <span nz-icon nzType="edit"></span>
-            <span nz-icon nzType="delete" (click)="delete(data.id)"></span>
+    </nz-card>
+</ng-container>
+
+<ng-container *ngIf="SERVICE_IS_IN_EDIT_MODE === true">
+    <nz-card>
+        <form nz-form [nzLayout]="'vertical'">
+            <div nz-row [nzGutter]="4">
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label>Service Title</nz-form-label>
+                        <nz-form-control>
+                            <input
+                                nz-input
+                                placeholder="Service Name"
+                                #title
+                                value="{{ data.title }}"
+                            />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label>Service CTA</nz-form-label>
+                        <nz-form-control>
+                            <input
+                                nz-input
+                                placeholder="Read more"
+                                value="{{ data.call_to_action }}"
+                                #call_to_action
+                            />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label>Service Description</nz-form-label>
+                        <nz-form-control>
+                            <textarea
+                                nz-input
+                                placeholder="description"
+                                value="{{ data.description }}"
+                                #description
+                            >
+                            </textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div nz-row [nzGutter]="4">
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-label>Service's sub services</nz-form-label>
+                        <nz-form-control>
+                            <textarea
+                                nz-input
+                                placeholder="sub_service_1,sub_service_2,sub_service_3,sub_service_4"
+                                value="{{ data.subServices }}"
+                                #subServices
+                            ></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-control>
+                            <label
+                                nz-checkbox
+                                #service_has_faq
+                                [nzChecked]="data.service_has_faq"
+                            >
+                                Service has FAQ(s)
+                            </label>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </form>
+
+        <!-- ACTONS FOR DISPLAY MODE -->
+        <nz-divider></nz-divider>
+        <div id="edit_service_card_footer">
+            <div id="footer_actions" *ngIf="SERVICE_LOCAL_STATE === false">
+                <span
+                    nz-icon
+                    nzType="stop"
+                    (click)="SERVICE_IS_IN_EDIT_MODE = false"
+                ></span>
+                <span nz-icon nzType="check" (click)="update(data.id)"></span>
+            </div>
+            <span
+                nz-icon
+                [nzType]="'sync'"
+                [nzSpin]="true"
+                *ngIf="SERVICE_LOCAL_STATE === true"
+            ></span>
         </div>
-        <span
-            nz-icon
-            [nzType]="'sync'"
-            [nzSpin]="true"
-            *ngIf="SERVICE_LOCAL_STATE === true"
-        ></span>
-    </div>
-</nz-card>
+    </nz-card>
+</ng-container>

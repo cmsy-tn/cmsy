@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { SERVICEACTIONSTATE, SERVICETYPE } from 'src/app/types/service.type';
+import { SERVICEACTIONSTATE, SERVICETYPE, UPDATED_SERVICE } from 'src/app/types/service.type';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -27,9 +27,9 @@ export class ServiceService {
     return this.http.get(`${this.API_URL}/services/${service_id}`);
   }
 
-  // updateElement(service_id: string, payload: UPDATED_FAQ) {
-  //   return this.http.put(`${this.API_URL}/services/${service_id}`, payload);
-  // }
+  updateElement(service_id: string, payload: UPDATED_SERVICE) {
+    return this.http.put(`${this.API_URL}/services/${service_id}`, payload);
+  }
 
   deleteElement(service_id: string): any {
     return this.http.delete(`${this.API_URL}/services/${service_id}`);
