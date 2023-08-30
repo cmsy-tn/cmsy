@@ -37,7 +37,6 @@ export class FaqCardComponent {
 
   editFAQ(faq_id: string) {
     this.faq_being_worked_on_local_state = true;
-
     let updated_values: UPDATED_FAQ = {
       question: this.question_updated.nativeElement.value,
       answer: this.answer_updated.nativeElement.value,
