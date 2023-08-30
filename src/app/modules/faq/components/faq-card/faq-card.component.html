@@ -1,36 +1,87 @@
-<nz-card [nzActions]="[actionEdit, actionDelete]">
-    <nz-card-meta
-        [nzTitle]="data.question"
-        [nzDescription]="data.answer"
-    ></nz-card-meta>
-</nz-card>
-<!-- ACTOINS -->
+<ng-container *ngIf="faq_is_in_edit_mode === false">
+    <nz-card>
+        <!-- DISPLAYED IN SHOW MODE -->
+        <ng-container *ngIf="faq_is_in_edit_mode === false">
+            <nz-card-meta
+                [nzTitle]="data.question"
+                [nzDescription]="data.answer"
+            ></nz-card-meta>
+        </ng-container>
+        <!-- ACTONS FOR DISPLAY MODE -->
+        <nz-divider></nz-divider>
+        <div id="edit_faq_card_footer">
+            <div
+                id="fotter_actions"
+                *ngIf="faq_being_worked_on_local_state === false"
+            >
+                <span
+                    nz-icon
+                    nzType="edit"
+                    (click)="faq_is_in_edit_mode = true"
+                ></span>
+                <span
+                    nz-icon
+                    nzType="delete"
+                    (click)="deleteFAQ(data.id)"
+                ></span>
+            </div>
+            <span
+                nz-icon
+                [nzType]="'sync'"
+                [nzSpin]="true"
+                *ngIf="faq_being_worked_on_local_state === true"
+            ></span>
+        </div>
+    </nz-card>
+</ng-container>
 
-<ng-template #actionEdit>
-    <span
-        nz-icon
-        nzType="edit"
-        *ngIf="faq_being_worked_on_local_state === false"
-        (click)="editFAQ(data.id)"
-    ></span>
-    <span
-        nz-icon
-        [nzType]="'sync'"
-        [nzSpin]="true"
-        *ngIf="faq_being_worked_on_local_state === true"
-    ></span>
-</ng-template>
-<ng-template #actionDelete>
-    <span
-        nz-icon
-        nzType="delete"
-        *ngIf="faq_being_worked_on_local_state === false"
-        (click)="deleteFAQ(data.id)"
-    ></span>
-    <span
-        nz-icon
-        [nzType]="'sync'"
-        [nzSpin]="true"
-        *ngIf="faq_being_worked_on_local_state === true"
-    ></span>
-</ng-template>
+<ng-container *ngIf="faq_is_in_edit_mode === true">
+    <nz-card>
+        <!-- DISPLAYED IN EDIT MODE -->
+        <ng-container *ngIf="faq_is_in_edit_mode === true">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="14">Question to display</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <input
+                        nz-input
+                        placeholder="Question"
+                        id="question_input"
+                    />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label>Question's answer</nz-form-label>
+                <nz-form-control>
+                    <textarea
+                        nz-input
+                        [nzAutosize]="{ minRows: 3, maxRows: 5 }"
+                        placeholder="You need to press that button and that other one, then..."
+                        id="answer_input"
+                    ></textarea>
+                </nz-form-control>
+            </nz-form-item>
+        </ng-container>
+        <!-- ACTONS FOR EDIT MODE -->
+        <nz-divider></nz-divider>
+        <div id="edit_faq_card_footer">
+            <div
+                id="fotter_actions"
+                *ngIf="faq_being_worked_on_local_state === false"
+            >
+                <span
+                    nz-icon
+                    nzType="stop"
+                    (click)="faq_is_in_edit_mode = false"
+                ></span>
+                <span nz-icon nzType="check" (click)="editFAQ(data.id)"></span>
+            </div>
+            <span
+                nz-icon
+                [nzType]="'sync'"
+                [nzSpin]="true"
+                *ngIf="faq_being_worked_on_local_state === true"
+            ></span>
+        </div>
+    </nz-card>
+</ng-container>
