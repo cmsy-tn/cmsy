@@ -4,12 +4,23 @@
             <h1>{{ moduleName }}</h1>
             <p>{{ moduleDescription }}</p>
         </div>
+
         <button
+            *ngIf="moduleName.toLowerCase() !== 'blog'"
             nz-button
             nzType="primary"
             (click)="triggerFormEvent.emit(true)"
         >
             Create
+        </button>
+        <button
+            *ngIf="moduleName.toLowerCase() === 'blog'"
+            nz-button
+            nzType="primary"
+            [routerLink]="['/blog/0']"
+            [queryParams]="{ action: 'write' }"
+        >
+            Write
         </button>
     </div>
 </div>
