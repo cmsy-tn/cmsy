@@ -13,6 +13,8 @@
         #authenticated_view_outlet {
             width: calc(100% - var(--side-navigation));
             background-color: var(--dark-2);
+            height: 100%;
+            overflow-y: scroll;
         }
     }
 }

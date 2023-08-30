@@ -6,7 +6,9 @@
         "
         (triggerFormEvent)="createNewFAQModalIsVisible = true"
     ></cmsy-module-header>
-    <cmsy-faq-data></cmsy-faq-data>
+    <section class="module_main_display_area">
+        <cmsy-faq-data></cmsy-faq-data>
+    </section>
 </section>
 
 <!-- ADD NEW MODAL -->
@@ -16,6 +18,8 @@
     [nzFooter]="null"
 >
     <ng-container *nzModalContent>
-        <cmsy-faq-form (triggerCloseEvent)="createNewFAQModalIsVisible=false"></cmsy-faq-form>
+        <cmsy-faq-form
+            (triggerCloseEvent)="createNewFAQModalIsVisible = false"
+        ></cmsy-faq-form>
     </ng-container>
 </nz-modal>
