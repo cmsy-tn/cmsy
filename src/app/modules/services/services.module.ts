@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgZorroModule } from 'src/app/ng-zorro.module';
 // CUSTOM IMPORTS
-import { SharedModule } from '../shared/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { ServicesRoutingModule } from './services-routing.module';
 import { IndexComponent } from './views/index/index.component';
 import { ServiceFormComponent } from './components/service-form/service-form.component';
@@ -19,6 +20,7 @@ import { ServiceDataComponent } from './components/service-data/service-data.com
   ],
   imports: [
     CommonModule,
+    NgZorroModule,
     ReactiveFormsModule,
     SharedModule,
     ServicesRoutingModule

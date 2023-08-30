@@ -1,0 +1,59 @@
+#authentication_screen {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    #left__section {
+        width: var(--auth-screen-left-section);
+        height: 100%;
+        background-image: url('/assets/images/fennec.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    #right__section {
+        width: calc(100% - var(--auth-screen-left-section));
+
+        #right__section_header {
+            width: 100%;
+            height: var(--top-navigation);
+            text-align: right;
+            padding: 1rem;
+
+            a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 1.2rem;
+            }
+        }
+
+        #right__section_body {
+            width: 100%;
+            height: calc(100% - var(--top-navigation));
+            padding-left: 2rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+
+            div {
+                h1 {
+                    font-size: 3rem;
+                    font-weight: bold;
+                    line-height: 1;
+                }
+
+                p {
+                    font-size: 1.25rem;
+                    max-width: 500px;
+                    margin: 3rem 0;
+                }
+            }
+        }
+    }
+}

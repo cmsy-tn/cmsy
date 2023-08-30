@@ -1,9 +1,25 @@
-<section>
-    <h1 class="text-3xl text-white font-sans capitalize">
-        Services you provide
-    </h1>
-    <div class="divider"></div>
-    <cmsy-service-form></cmsy-service-form>
-    <div class="divider"></div>
-    <cmsy-service-data></cmsy-service-data>
+<section id="services_section">
+    <cmsy-module-header
+        [moduleName]="'Services you provide'"
+        [moduleDescription]="
+            'This module allows you to manage Services in your portfolio.'
+        "
+        (triggerFormEvent)="createNewServiceModalIsVisible = true"
+    ></cmsy-module-header>
+    <section class="module_main_display_area">
+        <cmsy-service-data></cmsy-service-data>
+    </section>
 </section>
+
+<!-- ADD NEW MODAL -->
+<nz-modal
+    [(nzVisible)]="createNewServiceModalIsVisible"
+    nzTitle="Create new Service"
+    [nzFooter]="null"
+>
+    <ng-container *nzModalContent>
+        <cmsy-service-form
+            (triggerCloseEvent)="createNewServiceModalIsVisible = false"
+        ></cmsy-service-form>
+    </ng-container>
+</nz-modal>

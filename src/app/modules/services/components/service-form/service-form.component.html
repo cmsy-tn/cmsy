@@ -1,91 +1,88 @@
-<div class="w-full p-4 bg-[#111111] rounded-2xl">
-    <form [formGroup]="SERVICE_FORM">
-        <!-- ************************ -->
-        <div class="grid grid-cols-2 gap-4">
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text capitalize text-white">
-                        service title
-                    </span>
-                </label>
-                <input
-                    type="text"
-                    placeholder="AWESOME_SERVICE_NAME"
-                    class="input input-bordered w-full"
-                    formControlName="title"
-                />
-            </div>
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text capitalize text-white">
-                        service call to action text
-                    </span>
-                </label>
-                <input
-                    type="text"
-                    placeholder="get in touch!"
-                    class="input input-bordered w-full"
-                    formControlName="call_to_action"
-                />
-            </div>
-        </div>
-        <!-- ************************ -->
-        <div class="form-control mt-4">
-            <label class="label">
-                <span class="label-text capitalize text-white">
-                    service description
-                </span>
-            </label>
-            <textarea
-                class="textarea textarea-bordered w-full"
-                placeholder="Lorem ipsum dolor sit amet."
-                formControlName="description"
-            ></textarea>
-        </div>
-        <!-- ************************ -->
-        <div class="w-full grid grid-cols-2 gap-4">
-            <div class="form-control w-full mt-4">
-                <label class="label">
-                    <span class="label-text capitalize text-white">
-                        service sub services
-                        <em class="text-primary">(comma serparated)</em>
-                    </span>
-                </label>
-                <input
-                    type="text"
-                    placeholder="subservice_1, subservice_2, subservice_3"
-                    class="input input-bordered w-full"
-                    formControlName="subServices"
-                />
-            </div>
-
-            <div class="form-control w-full mt-8">
-                <label class="label cursor-pointer justify-start">
-                    <span class="label-text mr-8">Service has FAQ?</span>
+<form [formGroup]="SERVICE_FORM" nz-form [nzLayout]="'vertical'">
+    <div nz-row [nzGutter]="4">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label>Service Title</nz-form-label>
+                <nz-form-control>
                     <input
-                        type="checkbox"
-                        class="toggle"
-                        [checked]="false"
-                        (change)="hasFAQs = !hasFAQs"
-                        formControlName="service_has_faq"
+                        nz-input
+                        placeholder="Service Name"
+                        formControlName="title"
                     />
-                </label>
-            </div>
+                </nz-form-control>
+            </nz-form-item>
         </div>
-    </form>
-    <div class="w-full text-right">
-        <ng-container *ngIf="SERVICE_FORM.touched && SERVICE_FORM.valid">
-            <ng-container *ngIf="DATA_IS_BEING_SENT === false">
-                <button
-                    class="px-4 py-2 bg-white text-black rounded-e-md"
-                    (click)="saveService()"
-                >
-                    save
-                </button>
-            </ng-container>
-            <ng-container *ngIf="DATA_IS_BEING_SENT == true">
-                <span class="loading loading-spinner text-error"></span>
-            </ng-container>
-        </ng-container>
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label>Service CTA</nz-form-label>
+                <nz-form-control>
+                    <input
+                        nz-input
+                        placeholder="Read more"
+                        formControlName="call_to_action"
+                    />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
     </div>
-</div>
+
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <nz-form-item>
+                <nz-form-label>Service Description</nz-form-label>
+                <nz-form-control>
+                    <textarea
+                        nz-input
+                        placeholder="description"
+                        formControlName="description"
+                    >
+                    </textarea>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row [nzGutter]="4">
+        <div nz-col [nzSpan]="12">
+            <nz-form-item>
+                <nz-form-label>Service's sub services</nz-form-label>
+                <nz-form-control>
+                    <textarea
+                        nz-input
+                        placeholder="sub_service_1,sub_service_2,sub_service_3,sub_service_4"
+                        formControlName="subServices"
+                    ></textarea>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <nz-form-item>
+                <nz-form-control>
+                    <label nz-checkbox formControlName="service_has_faq">
+                        Service has FAQ(s)
+                    </label>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <nz-divider></nz-divider>
+    <div id="create_service_modal_footer">
+        <button
+            nz-button
+            nzType="default"
+            (click)="triggerCloseEvent.emit(true)"
+        >
+            Cancel
+        </button>
+        <button
+            nz-button
+            nzType="primary"
+            [nzLoading]="DATA_IS_BEING_SENT"
+            [disabled]="!SERVICE_FORM.touched || !SERVICE_FORM.valid"
+            (click)="saveService()"
+        >
+            save
+        </button>
+    </div>
+</form>

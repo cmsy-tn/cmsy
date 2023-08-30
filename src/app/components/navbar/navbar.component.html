@@ -1,27 +1,22 @@
-<div class="drawer drawer-end">
-    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content">
-        <!-- NAVBAR COMPOENTS -->
-        <div class="navbar bg-base-200">
-            <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-xl">CMSY</a>
-            </div>
-            <label for="my-drawer">
-                <img
-                    [src]="(auth0.user$ | async)?.picture"
-                    alt="user profile picture"
-                    class="w-[40px] h-[40px] rounded-[50%] cursor-pointer"
-                />
-            </label>
-        </div>
+<div id="authenticated_navbar">
+    <div id="notification_trigger">
+        <span nz-icon nzType="bell" nzTheme="outline"></span>
     </div>
-
-    <div class="drawer-side">
-        <label for="my-drawer" class="drawer-overlay"></label>
-        <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
-            <cmsy-user-profile></cmsy-user-profile>
-        </ul>
-    </div>
-
-    <!-- END OF DRAWER -->
+    <nz-avatar
+        nzIcon="user"
+        [nzSrc]="(auth0.user$ | async)?.picture"
+        (click)="open()"
+    ></nz-avatar>
 </div>
+
+<nz-drawer
+    [nzClosable]="false"
+    [nzVisible]="visible"
+    nzPlacement="right"
+    nzTitle="Basic Drawer"
+    (nzOnClose)="close()"
+>
+    <ng-container *nzDrawerContent>
+        <cmsy-user-profile></cmsy-user-profile>
+    </ng-container>
+</nz-drawer>

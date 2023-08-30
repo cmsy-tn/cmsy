@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-// Import the module from the SDK
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+// Auth0
 import { AuthModule } from '@auth0/auth0-angular';
-
+// CUSTOM MODULES
+import { NgZorroModule } from './ng-zorro.module';
 // CUSTOM IMPORTS
 import { AuthenticationAlertComponent } from './views/authentication-alert/authentication-alert.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
@@ -15,6 +19,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -29,8 +35,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: environment.auth0.domain,
       clientId: environment.auth0.clientId,
@@ -38,7 +44,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
         redirect_uri: window.location.origin
       }
     }),
-    HttpClientModule
+    HttpClientModule,
+    NgZorroModule
   ],
   providers: [],
   bootstrap: [AppComponent]
