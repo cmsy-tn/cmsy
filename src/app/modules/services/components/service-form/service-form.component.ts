@@ -57,6 +57,8 @@ export class ServiceFormComponent implements OnInit {
             id: '',
             action: 'add'
           });
+          this.DATA_IS_BEING_SENT = false;
+          this.triggerCloseEvent.emit(true); // close modal
         }
       }
     })
