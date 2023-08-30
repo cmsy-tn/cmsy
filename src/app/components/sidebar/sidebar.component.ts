@@ -12,6 +12,7 @@ export class SidebarComponent {
     { label: 'dashboard', link: 'dashboard', icon: `home` },
     { label: 'faq', link: 'faq', icon: 'question-circle' },
     { label: 'services', link: 'services', icon: 'heat-map' },
+    { label: 'blog', link: 'blog', icon: 'edit' },
     { label: 'settings', link: 'settings', icon: 'control' }
   ];
 
