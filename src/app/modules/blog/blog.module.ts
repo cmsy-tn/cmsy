@@ -9,12 +9,16 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 // CUSTOM IMPORTS
 import { IndexComponent } from './views/index/index.component';
 import { BlogAddComponent } from './views/blog-add/blog-add.component';
+import { BlogDataComponent } from './components/blog-data/blog-data.component';
+import { BlogCardComponent } from './components/blog-card/blog-card.component';
 
 
 @NgModule({
   declarations: [
     IndexComponent,
-    BlogAddComponent
+    BlogAddComponent,
+    BlogDataComponent,
+    BlogCardComponent
   ],
   imports: [
     CommonModule,
