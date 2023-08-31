@@ -16,6 +16,7 @@ export class BlogDataComponent implements OnInit {
 
   ngOnInit() {
     this.fetchData();
+    this.checkForUpdates();
   }
 
   fetchData() {
@@ -24,6 +25,15 @@ export class BlogDataComponent implements OnInit {
       next: (response: any) => {
         this.BLOG_DATA = response;
         this.isFetchingData = false;
+      }
+    })
+  }
+
+  checkForUpdates() {
+    this.blogService.BLOG_POST_HAS_BEEN_TRIGGERED$.subscribe({
+      next: (response: any) => {
+        if (response.state && response.action === 'del')
+          this.BLOG_DATA = this.BLOG_DATA.filter(element => element.id !== response.id);
       }
     })
   }

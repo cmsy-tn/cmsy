@@ -12,7 +12,7 @@ export class BlogAddComponent implements OnInit {
   // DUMMY POST USED TO KEEP STATE
   // WHY DIDN'T I USEA FORM I HEAR YOU ASK
   // Raised an issue 🙌
-  BlogPost: BlogPostType = {
+  BlogPost: any = {
     post_title: '',
     post_content: '',
     post_status: STATUS_ENUM.DRAFT,

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BlogPostType } from 'src/app/types/blog.post.type';
+import { BehaviorSubject } from 'rxjs';
+import { BLOGPOSTACTIONSTATE, BlogPostType } from 'src/app/types/blog.post.type';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,6 +10,8 @@ import { environment } from 'src/environments/environment';
 export class BlogService {
 
   API_URL = environment.API_URL;
+  BLOG_POST_HAS_BEEN_TRIGGERED$ = new BehaviorSubject<BLOGPOSTACTIONSTATE>(<BLOGPOSTACTIONSTATE>{ state: false, id: '', action: '' });
+
 
   constructor(private http: HttpClient) { }
 
