@@ -6,8 +6,8 @@
     <ng-container *ngIf="isFetchingData === false">
         <ng-container *ngIf="BLOG_DATA.length !== 0">
             <main id="blog_gridLayout">
-                <ng-container *ngFor="let faq of BLOG_DATA">
-                    <cmsy-blog-card></cmsy-blog-card>
+                <ng-container *ngFor="let post of BLOG_DATA">
+                    <cmsy-blog-card [data]="post"></cmsy-blog-card>
                 </ng-container>
             </main>
         </ng-container>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { BlogPostType } from 'src/app/types/blog.post.type';
 
 @Component({
   selector: 'cmsy-blog-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./blog-card.component.scss']
 })
 export class BlogCardComponent {
-
+  @Input() data!: BlogPostType | any;
 }

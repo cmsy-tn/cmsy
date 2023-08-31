@@ -11,6 +11,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 
 
@@ -28,7 +29,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
         NzModalModule,
         NzInputModule,
         NzFormModule,
-        NzCheckboxModule
+        NzCheckboxModule,
+        NzBadgeModule
     ]
 })
 export class NgZorroModule { }

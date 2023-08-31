@@ -1,1 +1,17 @@
-<p>blog-card works!</p>
+<nz-ribbon
+    [nzText]="data.post_status === '1' ? 'Valid' : 'Draft'"
+    [nzColor]="data.post_status === '1' ? 'green' : 'yellow'"
+>
+    <nz-card [nzCover]="coverTemplate">
+        <nz-card-meta
+            [nzTitle]="data.post_title"
+            [nzDescription]="contentTemplte"
+        ></nz-card-meta>
+    </nz-card>
+    <ng-template #coverTemplate>
+        <img alt="example" [src]="data.post_cover_image" />
+    </ng-template>
+    <ng-template #contentTemplte>
+        <small>{{ data.created_at | date }}</small>
+    </ng-template>
+</nz-ribbon>
