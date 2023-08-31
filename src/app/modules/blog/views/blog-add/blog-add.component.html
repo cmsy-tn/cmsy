@@ -1,6 +1,16 @@
 <section id="blog__section_manage">
     <section class="module_main_display_area">
-        <button (click)="triggerSave()">save the motherfucker</button>
+        <div id="blog__section_manage_header">
+            <button nz-button nzType="default" id="add_cover_trigger">
+                Add cover image
+            </button>
+            <input
+                type="text"
+                name="blog_post_title"
+                id="blog_post_title"
+                placeholder="AWESOME TITLE HERE"
+            />
+        </div>
         <editor
             [init]="{ plugins: 'lists link image table code help wordcount' }"
             apiKey=""
