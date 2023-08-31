@@ -16,5 +16,20 @@ export class BlogService {
     return this.http.post(`${this.API_URL}/blog/`, payload);
   }
 
+  fetchOne(id: string) {
+    return this.http.get(`${this.API_URL}/blog/${id}`);
+  }
+
+  fetchAll() {
+    return this.http.get(`${this.API_URL}/blog/`);
+  }
+
+  update(id: string, payload: BlogPostType) {
+    return this.http.put(`${this.API_URL}/blog/${id}`, payload);
+  }
+
+  delete(id: string) {
+    return this.http.delete(`${this.API_URL}/blog/${id}`);
+  }
 
 }
