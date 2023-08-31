@@ -16,4 +16,16 @@
         border: none;
         outline: none;
     }
+
+    #actions_bar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        button:last-of-type {
+            margin-left: .5rem;
+        }
+    }
 }
