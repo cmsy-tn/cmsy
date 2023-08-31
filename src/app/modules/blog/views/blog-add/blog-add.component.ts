@@ -36,7 +36,14 @@ export class BlogAddComponent implements OnInit {
       next: (value: any) => { this.EDITOR_MODE.current_action = value.action; }
     })
     this.currentRoute.params.subscribe({
-      next: (value: any) => { this.EDITOR_MODE.current_id = value.id; }
+      next: (value: any) => {
+        if (value.id !== 0) {
+          this.EDITOR_MODE.current_id = value.id;
+          this.blogService.fetchOne(value.id).subscribe({
+            next: (response: any) => { this.BlogPost = response; }
+          })
+        }
+      }
     })
   }
 
