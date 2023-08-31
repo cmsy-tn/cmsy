@@ -1,1 +1,10 @@
-<p>blog-add works!</p>
+<section id="blog__section_manage">
+    <section class="module_main_display_area">
+        <button (click)="triggerSave()">save the motherfucker</button>
+        <editor
+            [init]="{ plugins: 'lists link image table code help wordcount' }"
+            apiKey=""
+            [(ngModel)]="dataModel"
+        ></editor>
+    </section>
+</section>

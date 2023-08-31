@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./blog-add.component.scss']
 })
 export class BlogAddComponent {
+  dataModel: any;
+  triggerSave() {
+    console.log(this.dataModel);
 
+  }
 }
