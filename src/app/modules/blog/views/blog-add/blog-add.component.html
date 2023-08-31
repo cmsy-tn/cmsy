@@ -6,10 +6,20 @@
                     Add cover image
                 </button>
                 <div id="main_actions">
-                    <button nz-button nzType="primary" id="add_cover_trigger">
+                    <button
+                        nz-button
+                        nzType="primary"
+                        id="add_cover_trigger"
+                        (click)="savePost('valid')"
+                    >
                         Publish
                     </button>
-                    <button nz-button nzType="default" id="add_cover_trigger">
+                    <button
+                        nz-button
+                        nzType="default"
+                        id="add_cover_trigger"
+                        (click)="savePost('draft')"
+                    >
                         Save Draft
                     </button>
                 </div>
@@ -19,12 +29,13 @@
                 name="blog_post_title"
                 id="blog_post_title"
                 placeholder="AWESOME TITLE HERE"
+                [(ngModel)]="BlogPost.post_title"
             />
         </div>
         <editor
             [init]="{ plugins: 'lists link image table code help wordcount' }"
             apiKey=""
-            [(ngModel)]="dataModel"
+            [(ngModel)]="BlogPost.post_content"
         ></editor>
     </section>
 </section>
