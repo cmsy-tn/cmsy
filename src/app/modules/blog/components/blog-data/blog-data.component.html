@@ -1,0 +1,19 @@
+<section id="blog__data_display_section">
+    <ng-container *ngIf="isFetchingData === true">
+        <span nz-icon [nzType]="'sync'" [nzSpin]="true"></span>
+    </ng-container>
+
+    <ng-container *ngIf="isFetchingData === false">
+        <ng-container *ngIf="BLOG_DATA.length !== 0">
+            <main id="blog_gridLayout">
+                <ng-container *ngFor="let post of BLOG_DATA">
+                    <cmsy-blog-card [data]="post"></cmsy-blog-card>
+                </ng-container>
+            </main>
+        </ng-container>
+
+        <ng-container *ngIf="BLOG_DATA.length === 0">
+            <h3>NOT DATA FOUND!</h3>
+        </ng-container>
+    </ng-container>
+</section>

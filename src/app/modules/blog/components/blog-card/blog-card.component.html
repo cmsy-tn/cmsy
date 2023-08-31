@@ -1,0 +1,39 @@
+<nz-ribbon
+    [nzText]="data.post_status === '1' ? 'Valid' : 'Draft'"
+    [nzColor]="data.post_status === '1' ? 'green' : 'yellow'"
+>
+    <nz-card [nzCover]="coverTemplate">
+        <nz-card-meta
+            [nzTitle]="data.post_title"
+            [nzDescription]="contentTemplte"
+        ></nz-card-meta>
+        <!-- ACTONS FOR EDIT MODE -->
+        <nz-divider></nz-divider>
+        <div id="edit_blog_card_footer">
+            <div
+                id="fotter_actions"
+                *ngIf="blog_post_is_being_worked_on_local_state === false"
+            >
+                <span
+                    nz-icon
+                    nzType="edit"
+                    [routerLink]="['/blog/' + data.id]"
+                    [queryParams]="{ action: 'write' }"
+                ></span>
+                <span nz-icon nzType="delete" (click)="delete(data.id)"></span>
+            </div>
+            <span
+                nz-icon
+                [nzType]="'sync'"
+                [nzSpin]="true"
+                *ngIf="blog_post_is_being_worked_on_local_state === true"
+            ></span>
+        </div>
+    </nz-card>
+    <ng-template #coverTemplate>
+        <img alt="example" [src]="data.post_cover_image" />
+    </ng-template>
+    <ng-template #contentTemplte>
+        <small>{{ data.created_at | date }}</small>
+    </ng-template>
+</nz-ribbon>

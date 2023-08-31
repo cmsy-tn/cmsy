@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'faq', loadChildren: () => import("src/app/modules/faq/faq.module").then((module) => module.FaqModule) },
   { path: 'services', loadChildren: () => import("src/app/modules/services/services.module").then((module) => module.ServicesModule) },
+  { path: 'blog', loadChildren: () => import("src/app/modules/blog/blog.module").then((module) => module.BlogModule) },
   { path: 'settings', loadChildren: () => import("src/app/modules/settings/settings.module").then((module) => module.SettingsModule) },
   { path: '**', component: NotFoundComponent },
 ];
