@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogPostType, STATUS_ENUM } from 'src/app/types/blog.post.type';
 import { BlogService } from '../../blog.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'cmsy-blog-add',
@@ -25,6 +26,31 @@ export class BlogAddComponent implements OnInit {
     current_action: ''
   }
 
+  htmlContent: string = '';
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+    ]
+  };
+
+
   constructor(
     private blogService: BlogService,
     private currentRoute: ActivatedRoute,
@@ -32,9 +58,13 @@ export class BlogAddComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getConfigFromRoute();
+  }
+
+  getConfigFromRoute() {
     this.currentRoute.queryParams.subscribe({
       next: (value: any) => { this.EDITOR_MODE.current_action = value.action; }
-    })
+    });
     this.currentRoute.params.subscribe({
       next: (value: any) => {
         if (value.id !== 0) {

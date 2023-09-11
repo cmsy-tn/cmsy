@@ -32,10 +32,9 @@
                 [(ngModel)]="BlogPost.post_title"
             />
         </div>
-        <editor
-            [init]="{ plugins: 'lists link image table code help wordcount' }"
-            apiKey=""
-            [(ngModel)]="BlogPost.post_content"
-        ></editor>
+        <angular-editor
+            [placeholder]="'Enter text here...'"
+            [(ngModel)]="htmlContent"
+        ></angular-editor>
     </section>
 </section>
