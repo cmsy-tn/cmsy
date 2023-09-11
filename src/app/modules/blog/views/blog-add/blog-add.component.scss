@@ -29,3 +29,30 @@
         }
     }
 }
+
+
+// EDITOR CUSTOM STYLING TO FIT CMS THEME
+::ng-deep .angular-editor {
+
+    .angular-editor-toolbar {
+        background-color: var(--dark-2) !important;
+        border: 2px solid var(--light-1) !important;
+
+        .angular-editor-toolbar-set button {
+            background-color: var(--dark-1) !important;
+            border: 1px solid var(--light-1) !important;
+        }
+    }
+
+    .angular-editor-wrapper {
+        height: 50vh !important;
+        border: 2px solid var(--light-1) !important;
+        margin-top: 1rem !important;
+
+        .angular-editor-textarea {
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+        }
+    }
+}
