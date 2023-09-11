@@ -27,3 +27,10 @@ body {
     max-width: 1200px;
     margin: 1rem auto;
 }
+
+.module_data_grid_layout {
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
