@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogPostType, STATUS_ENUM } from 'src/app/types/blog.post.type';
 import { BlogService } from '../../blog.service';
@@ -10,15 +11,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
   styleUrls: ['./blog-add.component.scss']
 })
 export class BlogAddComponent implements OnInit {
-  // DUMMY POST USED TO KEEP STATE
-  // WHY DIDN'T I USEA FORM I HEAR YOU ASK
-  // Raised an issue 🙌
-  BlogPost: any = {
-    post_title: '',
-    post_content: '',
-    post_status: STATUS_ENUM.DRAFT,
-    post_cover_image: ''
-  }
+  blogForm: FormGroup = new FormGroup({});
 
   // USED TO KEEP TRACK OF CURRENT MODE AND LOADED POST
   EDITOR_MODE = {
@@ -26,7 +19,6 @@ export class BlogAddComponent implements OnInit {
     current_action: ''
   }
 
-  htmlContent: string = '';
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -38,9 +30,8 @@ export class BlogAddComponent implements OnInit {
     translate: 'yes',
     enableToolbar: true,
     showToolbar: true,
-    placeholder: 'Enter text here...',
     defaultParagraphSeparator: '',
-    defaultFontName: '',
+    defaultFontName: 'sans-serif',
     defaultFontSize: '',
     fonts: [
       { class: 'arial', name: 'Arial' },
@@ -48,23 +39,35 @@ export class BlogAddComponent implements OnInit {
       { class: 'calibri', name: 'Calibri' },
       { class: 'comic-sans-ms', name: 'Comic Sans MS' }
     ],
-    customClasses: [
-      {
-        name: 'customToolBar',
-        class: 'customToolBar',
-      }
+    toolbarHiddenButtons: [
+      [
+        'customClasses',
+        'link',
+        'unlink',
+        'insertImage',
+        'insertVideo',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode'
+      ]
     ]
   };
 
-
   constructor(
     private blogService: BlogService,
+    private fb: FormBuilder,
     private currentRoute: ActivatedRoute,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.getConfigFromRoute();
+  ngOnInit() {
+    this.blogForm = this.fb.group({
+      post_title: [null],
+      post_content: [null],
+      post_status: [null],
+      post_cover_image: [null]
+    });
+    // this.getConfigFromRoute();
   }
 
   getConfigFromRoute() {
@@ -76,7 +79,7 @@ export class BlogAddComponent implements OnInit {
         if (value.id !== 0) {
           this.EDITOR_MODE.current_id = value.id;
           this.blogService.fetchOne(value.id).subscribe({
-            next: (response: any) => { this.BlogPost = response; }
+            next: (response: any) => { this.blogForm = response; }
           })
         }
       }
@@ -86,8 +89,8 @@ export class BlogAddComponent implements OnInit {
   savePost(STATUS: string) {
     // making sure the post always has a title
     const POST_TO_SAVE = {
-      ...this.BlogPost,
-      post_status: (this.BlogPost.post_title !== '' && STATUS === 'valid') ? STATUS_ENUM.VALID : STATUS_ENUM.DRAFT
+      ...this.blogForm.value,
+      post_status: (this.blogForm.get('post_title')?.value !== '' && STATUS === 'valid') ? STATUS_ENUM.VALID : STATUS_ENUM.DRAFT
     }
     if (this.EDITOR_MODE.current_action === 'write')
       this.blogService.addElement(POST_TO_SAVE).subscribe({

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroModule } from 'src/app/ng-zorro.module';
 import { SharedModule } from '../shared/shared.module';
 import { BlogRoutingModule } from './blog-routing.module';
@@ -24,6 +24,7 @@ import { BlogCardComponent } from './components/blog-card/blog-card.component';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     NgZorroModule,
     SharedModule,
     BlogRoutingModule,
