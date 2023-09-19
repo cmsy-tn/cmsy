@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogPostType, STATUS_ENUM } from 'src/app/types/blog.post.type';
 import { BlogService } from '../../blog.service';
@@ -74,8 +74,8 @@ export class BlogAddComponent implements OnInit {
   buildForm(action: string, payload: any) {
     if (action === 'create')
       this.blogForm = this.fb.group({
-        post_title: [null],
-        post_content: [null],
+        post_title: [null, [Validators.required, Validators.minLength(5)]],
+        post_content: [null, [Validators.required, Validators.minLength(5)]],
         post_status: [null],
         post_cover_image: [null]
       });

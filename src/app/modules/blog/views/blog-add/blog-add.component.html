@@ -12,6 +12,7 @@
                             nzType="primary"
                             id="add_cover_trigger"
                             (click)="savePost('valid')"
+                            [disabled]="blogForm.valid === false"
                         >
                             Publish
                         </button>
