@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogPostType, STATUS_ENUM } from 'src/app/types/blog.post.type';
@@ -61,29 +61,35 @@ export class BlogAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getConfigFromRoute();
+    this.buildForm();
+  }
+
+  getConfigFromRoute() {
+    this.EDITOR_MODE.current_action = this.currentRoute.snapshot.queryParams['action'];
+    this.EDITOR_MODE.current_id = this.currentRoute.snapshot.params['id'];
+    this.fetchCurrentBlogPost();
+  }
+
+  buildForm() {
     this.blogForm = this.fb.group({
       post_title: [null],
       post_content: [null],
       post_status: [null],
       post_cover_image: [null]
     });
-    // this.getConfigFromRoute();
   }
 
-  getConfigFromRoute() {
-    this.currentRoute.queryParams.subscribe({
-      next: (value: any) => { this.EDITOR_MODE.current_action = value.action; }
-    });
-    this.currentRoute.params.subscribe({
-      next: (value: any) => {
-        if (value.id !== 0) {
-          this.EDITOR_MODE.current_id = value.id;
-          this.blogService.fetchOne(value.id).subscribe({
-            next: (response: any) => { this.blogForm = response; }
-          })
+  fetchCurrentBlogPost() {
+    if (this.EDITOR_MODE.current_id !== '0')
+      this.blogService.fetchOne(this.EDITOR_MODE.current_id).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          this.blogForm = response;
         }
-      }
-    })
+      })
+    else
+      this.buildForm();
   }
 
   savePost(STATUS: string) {
