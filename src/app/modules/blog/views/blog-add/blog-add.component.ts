@@ -62,7 +62,7 @@ export class BlogAddComponent implements OnInit {
 
   ngOnInit() {
     this.getConfigFromRoute();
-    this.buildForm();
+    this.buildForm('create', null);
   }
 
   getConfigFromRoute() {
@@ -71,33 +71,44 @@ export class BlogAddComponent implements OnInit {
     this.fetchCurrentBlogPost();
   }
 
-  buildForm() {
-    this.blogForm = this.fb.group({
-      post_title: [null],
-      post_content: [null],
-      post_status: [null],
-      post_cover_image: [null]
-    });
+  buildForm(action: string, payload: any) {
+    if (action === 'create')
+      this.blogForm = this.fb.group({
+        post_title: [null],
+        post_content: [null],
+        post_status: [null],
+        post_cover_image: [null]
+      });
+    else
+      this.blogForm = this.fb.group({
+        post_title: [payload.post_title],
+        post_content: [payload.post_content],
+        post_status: [null],
+        post_cover_image: [payload.post_cover_image]
+      });
+
   }
 
   fetchCurrentBlogPost() {
     if (this.EDITOR_MODE.current_id !== '0')
       this.blogService.fetchOne(this.EDITOR_MODE.current_id).subscribe({
-        next: (response: any) => {
-          console.log(response);
-          this.blogForm = response;
-        }
+        next: (response: any) => { this.buildForm('update', response); }
       })
     else
-      this.buildForm();
+      this.buildForm('create', null);
   }
 
   savePost(STATUS: string) {
+    const current_cover_image_url = this.blogForm.get('post_cover_image')?.value;
+    const cover_not_found_url = 'https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg'
+
     // making sure the post always has a title
     const POST_TO_SAVE = {
       ...this.blogForm.value,
+      post_cover_image: (current_cover_image_url === null) ? cover_not_found_url : current_cover_image_url,
       post_status: (this.blogForm.get('post_title')?.value !== '' && STATUS === 'valid') ? STATUS_ENUM.VALID : STATUS_ENUM.DRAFT
-    }
+    };
+
     if (this.EDITOR_MODE.current_action === 'write')
       this.blogService.addElement(POST_TO_SAVE).subscribe({
         next: (response: any) => {
