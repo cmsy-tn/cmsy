@@ -10,6 +10,7 @@ export class SidebarComponent {
 
   routes: any[] = [
     { label: 'dashboard', link: 'dashboard', icon: `home` },
+    { label: 'profile', link: 'profile', icon: 'user' },
     { label: 'faq', link: 'faq', icon: 'question-circle' },
     { label: 'services', link: 'services', icon: 'heat-map' },
     { label: 'blog', link: 'blog', icon: 'edit' },
