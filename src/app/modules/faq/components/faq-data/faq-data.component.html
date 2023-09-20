@@ -5,7 +5,7 @@
 
     <ng-container *ngIf="isFetchingData === false">
         <ng-container *ngIf="FAQ_DATA.length !== 0">
-            <main id="faq_gridLayout">
+            <main class="module_data_grid_layout">
                 <ng-container *ngFor="let faq of FAQ_DATA">
                     <cmsy-faq-card [data]="faq"></cmsy-faq-card>
                 </ng-container>

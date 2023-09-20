@@ -5,6 +5,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 
 const routes: Routes = [
+  { path: '',pathMatch: 'full', redirectTo: 'dashboard' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'faq', loadChildren: () => import("src/app/modules/faq/faq.module").then((module) => module.FaqModule) },
   { path: 'services', loadChildren: () => import("src/app/modules/services/services.module").then((module) => module.ServicesModule) },

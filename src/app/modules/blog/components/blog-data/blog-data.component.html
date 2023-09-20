@@ -5,7 +5,7 @@
 
     <ng-container *ngIf="isFetchingData === false">
         <ng-container *ngIf="BLOG_DATA.length !== 0">
-            <main id="blog_gridLayout">
+            <main class="module_data_grid_layout">
                 <ng-container *ngFor="let post of BLOG_DATA">
                     <cmsy-blog-card [data]="post"></cmsy-blog-card>
                 </ng-container>
