@@ -106,13 +106,29 @@ export class BlogAddComponent implements OnInit {
     const POST_TO_SAVE = {
       ...this.blogForm.value,
       post_cover_image: (current_cover_image_url === null) ? cover_not_found_url : current_cover_image_url,
-      post_status: (this.blogForm.get('post_title')?.value !== '' && STATUS === 'valid') ? STATUS_ENUM.VALID : STATUS_ENUM.DRAFT
+      /**
+       * no need to check for title and content
+       * since publish button will be disabled till they're filled out
+       * 👉️ If status is set to 'valid':
+       *      - title has been filled
+       *      - contnet has been filled
+       *      - cover image has been handled (line above)
+       *      ✅ save post as VLID
+       * 👉️ If status is set to 'draft':
+       *      - cover image has been handled (line above)
+       *      🔴 save post as DRAFT
+       */
+      post_status: (STATUS === 'valid') ? STATUS_ENUM.VALID : STATUS_ENUM.DRAFT
     };
 
     if (this.EDITOR_MODE.current_action === 'write')
       this.blogService.addElement(POST_TO_SAVE).subscribe({
         next: (response: any) => {
-          this.handlePostSubmit(response.id);
+          alert('Post has been saved!');
+          if (this.EDITOR_MODE.current_action !== 'update')
+            this.router
+              .navigate(['/blog/' + response.id], { queryParams: { action: 'update' } })
+              .then(() => { window.location.reload() });
         }
       })
     if (this.EDITOR_MODE.current_action === 'update')
@@ -121,15 +137,5 @@ export class BlogAddComponent implements OnInit {
           alert('Post has been updated!')
         }
       })
-  }
-
-  handlePostSubmit(id: string) {
-    alert('Post has been saved!');
-    // post saved but current mode is still write
-    //    👉️ saving will result in creating a new entry in DB
-    // navigate baack to same url but with updated params (id + mode)
-    //    👉️ saving will result in updating current entry in DB
-    this.router.navigate(['/blog/' + id], { queryParams: { action: 'update' } })
-    // now checl for current mode before saving to db
   }
 }
