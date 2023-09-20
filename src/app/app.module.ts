@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import en from '@angular/common/locales/en';
 // Auth0
 import { AuthModule } from '@auth0/auth0-angular';
@@ -40,6 +41,8 @@ registerLocaleData(en);
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     AuthModule.forRoot({
       domain: environment.auth0.domain,
