@@ -7,6 +7,64 @@
         (triggerFormEvent)="(null)"
     ></cmsy-module-header>
     <section class="module_main_display_area">
-        <p>profile data here!</p>
+        <form [formGroup]="userDataForm">
+            <!-- *** FULL NAME *** -->
+            <nz-form-item>
+                <nz-form-label [nzSpan]="14" class="dataLabel"
+                    >Your full name</nz-form-label
+                >
+                <nz-form-control [nzSpan]="14">
+                    <input
+                        nz-input
+                        placeholder="Jhon Doe"
+                        formControlName="user_full_name"
+                    />
+                </nz-form-control>
+            </nz-form-item>
+            <!-- *** BIO *** -->
+            <nz-form-item>
+                <nz-form-label [nzSpan]="14" class="dataLabel"
+                    >Describe yourself</nz-form-label
+                >
+                <nz-form-control [nzSpan]="14">
+                    <textarea
+                        nz-input
+                        placeholder="Full stack web developer..."
+                        formControlName="user_bio"
+                    ></textarea>
+                </nz-form-control>
+            </nz-form-item>
+            <!-- *** EMAIL *** -->
+            <nz-form-item>
+                <nz-form-label [nzSpan]="14" class="dataLabel"
+                    >You Email adress</nz-form-label
+                >
+                <nz-form-control [nzSpan]="14">
+                    <input
+                        nz-input
+                        placeholder="jhon@doe.com"
+                        formControlName="user_email"
+                    />
+                </nz-form-control>
+            </nz-form-item>
+
+            <small>
+                <em>
+                    All of the fields on this page are optional and can be
+                    deleted at any time, and by filling them out, you're giving
+                    us consent to share this data wherever your user profile
+                    appears.
+                </em>
+            </small>
+
+            <button
+                nz-button
+                nzType="primary"
+                (click)="save()"
+                [disabled]="userDataForm.valid === false"
+            >
+                Save Profile
+            </button>
+        </form>
     </section>
 </section>
